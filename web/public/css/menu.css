@@ -1,0 +1,96 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    background: #DDDDDD;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+#cabecera{
+    background-color: yellowgreen;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px
+    max-width: 800px;
+    letter-spacing: 2px;
+    margin: auto;
+    position: relative;
+    box-shadow: 0px 0px 10px #0c0c0c;
+        -webkit-box-shadown: 0 0 10px #0c0c0c; /*navegador chrome*/
+        -moz-box-shadown: 0 0 10px #0c0c0c;     /* navegador mozila*/
+
+}
+            
+#menu {
+    margin: auto;
+    width: 500px;
+    max-width: 1000px;
+    
+}
+
+.nav{
+    list-style: none;;
+}
+
+
+.nav {
+    top: -20px;
+    width:1000px; /*Le establecemos un ancho del menu*/
+    margin:10px auto; /*Centramos automaticamente*/
+    padding: 0px;
+
+}
+
+.nav > li {
+    float:left;
+}
+
+.nav li a {
+    background-color:#000;
+    color:#fff;
+    text-decoration:none;
+    padding:10px 12px;
+    display:block;
+}
+
+.nav li a:hover {
+    background-color:#434343;
+}
+
+.nav li ul {
+    display:none;
+    position:absolute;
+    min-width:240px;
+}
+
+/*sub menu*/
+.nav li:hover > ul {
+    display:block;
+}
+
+.nav li ul li {
+    position:relative;
+}
+
+.nav li ul li ul {
+    right:-140px;
+    top:0px;
+}
+
+
+h1, p{
+    text-align: center;
+}
+
+
+input{
+    border-radius: 8px;
+    line-height: 30px;
+}
+
+section{
+line-height: 30px;
+
+}

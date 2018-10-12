@@ -1,0 +1,53 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Liderministerio
+ *
+ * @ORM\Table(name="liderministerio", indexes={@ORM\Index(name="fk_liderministerio_ministerio1_idx", columns={"ministerio_idMinisterio"}), @ORM\Index(name="fk_liderministerio_miembro1_idx", columns={"miembro_idMiembro"})})
+ * @ORM\Entity
+ */
+class Liderministerio
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idliderministerio", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idliderministerio;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="estado", type="integer", nullable=true)
+     */
+    private $estado;
+
+    /**
+     * @var \Miembro
+     *
+     * @ORM\ManyToOne(targetEntity="Miembro")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="miembro_idMiembro", referencedColumnName="idMiembro")
+     * })
+     */
+    private $miembromiembro;
+
+    /**
+     * @var \Ministerio
+     *
+     * @ORM\ManyToOne(targetEntity="Ministerio")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ministerio_idMinisterio", referencedColumnName="idMinisterio")
+     * })
+     */
+    private $ministerioministerio;
+
+
+}
+
