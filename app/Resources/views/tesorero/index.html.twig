@@ -1,0 +1,51 @@
+
+
+{% extends 'base.html.twig' %}
+
+
+{% block title %} Menu Tesorero {% endblock %}
+
+{% block body %}
+
+ <header id="cabecera">
+        <h2>BIENVENIDO Tesorero</h2>
+    </header>
+
+    <div id="menu">    
+        <ul class="nav">
+
+            <li><a href="#" >Inicio</a> </li>
+            
+            <li><a href="#" class="dropdown-toggle active">Registro </a></li>
+
+            <li><a href="#" class="dropdown-toggle active">Tesoreria</a>
+                <ul>
+                    <li><a href=" ">Consulta Ingresos</a></li>
+                    <li><a href=" ">Consulta Gastos</a></li>
+                </ul>
+            </li>
+
+            <li><a href="#" class="dropdown-toggle active">Reporte</a>
+                <ul>
+                    <li><a href=" " >Reporte Ofrenda</a></li>
+                    <li><a href=" ">Reporte total efectivo</a></li>
+                </ul>
+            </li>
+
+            <li><a href=" ">salir</a></li>
+
+        </ul>
+    </div>
+
+</br>
+</br>
+
+
+<footer>
+    <h1>VISION</h1>
+        <p>Expandir el evangelio a toda la humanidad para alcanzar la vida eterna.</p>
+
+    <H1>MISION</H1>
+        <p>Evangelizar a la humanidad para restaurarlo y discipular a los miembros de la iglesia para cumplir el mandato de Dios, practicando la comunión entre ellos.  </p>
+</footer>
+{% endblock %}

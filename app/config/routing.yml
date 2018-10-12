@@ -1,0 +1,26 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+login:
+  path: /login
+  defaults: { _controller: AppBundle:Default:login }
+
+login_check:
+  path: /login_check
+
+logout:
+  path: /logout
+
+
+administradorPage:
+  path: /administradorPage
+  defaults: { _controller: AppBundle:Administrador:index }
+
+tesoreroPage:
+  path: /tesoreroPage
+  defaults: { _controller: AppBundle:Tesorero:index }
+
+obreroPage:
+  path: /obreroPage
+  defaults: { _controller: AppBundle:Tesorero:index }
