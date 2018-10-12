@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1 class="alert alert-info">Ventana de Miembros</h1>
+<br>
+<a class="btn btn-danger" href="{{path('nuevoMiembro')}}">
+	<i class="fa fa-plus"></i> Nuevo miembro
+</a>
+<br>
+
+<div class="container-fluid">
+	<table class=" table table-bordered">
+	<tr>
+		<th>Nombres</th>
+		<th>Apellido</th>
+		<th>Fecha nacimiento</th>
+	</tr>
+
+	<tbody>
+		{% for miembro in miembros %}
+		<tr>
+			<td>{{miembro.Nombres}}</td>
+			<td>{{miembro.Apellidos}}</td>
+			<td>{{miembro.FechaNac|date('d/m/Y')}}</td>
+		</tr>    
+		{% endfor %}
+	</tbody>
+</table>
+
+</div>
+
+
+{% endblock %}

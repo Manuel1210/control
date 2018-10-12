@@ -24,3 +24,19 @@ tesoreroPage:
 obreroPage:
   path: /obreroPage
   defaults: { _controller: AppBundle:Tesorero:index }
+
+usuarios:
+  path: /usuarios
+  defaults: { _controller: AppBundle:Administrador:usuarios }
+
+nuevoUsuario:
+  path: /nuevoUsuario
+  defaults: { _controller: AppBundle:Administrador:nuevoUsuario }
+
+miembros:
+  path: /miembros
+  defaults: { _controller: AppBundle:Administrador:miembros }
+
+nuevoMiembro:
+  path: /nuevoMiembro
+  defaults: { _controller: AppBundle:Administrador:nuevoMiembro }

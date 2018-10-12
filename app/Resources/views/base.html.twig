@@ -32,6 +32,47 @@
   <body>
 {% endblock %}
   {% block nav_menu %}
+    <header id="cabecera">
+        <h2>BIENVENIDO AL MENU DEL SISTEMA</h2>
+    </header>
+
+    <div id="menu">    
+        <ul class="nav">
+
+            <li><a href="{{path('administradorPage')}}" >Inicio</a> </li>
+            
+            <li><a href="#" class="dropdown-toggle active">Registros </a>
+                <ul>
+                    <li><a href="{{path('miembros')}}">Miembro</a></li>
+                    <li><a href="{{path('usuarios')}}">Usuario</a></li>
+                    <li><a href="">Bautizo</a></li>
+                    <li><a href="">Lider Ministerio</a></li>
+                    <li><a href="">Miembros Por Ministerio</a></li>
+                    <li><a href="">Presentacion</a></li>
+                </ul>
+            </li>
+
+            <li><a href="#" class="dropdown-toggle active">Tesorería</a>
+                 <ul>
+                    <li><a href=" " >Registro Ingresos</a></li>
+                    <li><a href=" ">Registro de Gastos</a></li>
+                </ul>
+            </li>
+
+            <li><a href="#" class="dropdown-toggle active">Reporte</a>
+                <ul>
+                    <li><a href=" ">Reporte Ofrenda</a></li>
+                    <li><a href=" ">Reporte Miembros</a></li>
+                </ul>
+            </li>
+
+            <li><a href="{{path('logout')}}">salir</a></li>
+
+        </ul>
+    </div>
+
+</br>
+</br>
   {% endblock %}
 
 

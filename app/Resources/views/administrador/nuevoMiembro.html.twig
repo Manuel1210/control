@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<h2 class="alert alert-info">Crear nuevo usuario</h2>
+
+	<div class="col-md-8">
+		{{ form_start(form) }}
+		{{ form_widget(form) }}
+		<button class="btn btn-success" type="submit">Guardar Usuario</button>
+		{{ form_end(form) }}
+	</div>
+    
+{% endblock %}
