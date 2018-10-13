@@ -38,70 +38,70 @@ class Miembro
     /**
      * @var string
      *
-     * @ORM\Column(name="Estado_Civil", type="string", length=10, nullable=true)
+     * @ORM\Column(name="estadoCivil", type="string", length=10, nullable=true)
      */
     private $estadoCivil;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Fecha_Nac", type="date", nullable=true)
+     * @ORM\Column(name="fechaNac", type="date", nullable=true)
      */
     private $fechaNac;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Genero", type="string", length=10, nullable=true)
+     * @ORM\Column(name="genero", type="string", length=10, nullable=true)
      */
     private $genero;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Email", type="string", length=45, nullable=true)
+     * @ORM\Column(name="email", type="string", length=45, nullable=true)
      */
     private $email;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Direccion", type="string", length=45, nullable=true)
+     * @ORM\Column(name="direccion", type="string", length=45, nullable=true)
      */
     private $direccion;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Telefono_Fijo", type="string", length=20, nullable=true)
+     * @ORM\Column(name="telefonoFijo", type="string", length=20, nullable=true)
      */
     private $telefonoFijo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Telefono_Movil", type="string", length=20, nullable=true)
+     * @ORM\Column(name="telefonoMovil", type="string", length=20, nullable=true)
      */
     private $telefonoMovil;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Nacionalidad", type="string", length=45, nullable=true)
+     * @ORM\Column(name="nacionalidad", type="string", length=45, nullable=true)
      */
     private $nacionalidad;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Profesion", type="string", length=45, nullable=true)
+     * @ORM\Column(name="profesion", type="string", length=45, nullable=true)
      */
     private $profesion;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Fecha_Aceptacion", type="date", nullable=true)
+     * @ORM\Column(name="fechaAceptacion", type="date", nullable=true)
      */
     private $fechaAceptacion;
 

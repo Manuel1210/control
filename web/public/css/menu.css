@@ -80,11 +80,13 @@ body{
 }
 
 
-h1, p{
+p, h2{
     text-align: center;
 }
 
-
+h3{
+    text-align: center;
+}
 input{
     border-radius: 8px;
     line-height: 30px;

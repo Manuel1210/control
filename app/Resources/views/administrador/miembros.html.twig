@@ -2,32 +2,57 @@
 
 {% block body %}
 
-<h1 class="alert alert-info">Ventana de Miembros</h1>
-<br>
-<a class="btn btn-danger" href="{{path('nuevoMiembro')}}">
-	<i class="fa fa-plus"></i> Nuevo miembro
-</a>
-<br>
+<h3 class="alert alert-info">Ventana de Miembros</h3>
 
-<div class="container-fluid">
-	<table class=" table table-bordered">
-	<tr>
-		<th>Nombres</th>
-		<th>Apellido</th>
-		<th>Fecha nacimiento</th>
-	</tr>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<a id="btn" class="btn btn-danger" href="{{path('nuevoMiembro')}}">
+				<i class="fa fa-plus"></i> Nuevo miembro
+			</a>
+			<br>
 
-	<tbody>
-		{% for miembro in miembros %}
-		<tr>
-			<td>{{miembro.Nombres}}</td>
-			<td>{{miembro.Apellidos}}</td>
-			<td>{{miembro.FechaNac|date('d/m/Y')}}</td>
-		</tr>    
-		{% endfor %}
-	</tbody>
-</table>
+			<div class="panel panel-primary ">
+				<div class="panel-body">
+					<table class=" table table-bordered">
+						<tr>
+							<th>Nombres</th>
+							<th>Apellidos</th>
+							<th>Estado Civil</th>
+							<th>Fecha nacimiento</th>
+							<th>Genero</th>
+							<th>Email</th>
+							<th>Direccion</th>
+							<th>Telefono Fijo</th>
+							<th>Telefono Movil</th>
+							<th>Nacionalidad</th>
+							<th>Profesion</th>
+							<th>Fecha Aceptacion</th>
+						</tr>
 
+						<tbody>
+							{% for miembro in miembros %}
+							<tr>
+								<td>{{miembro.Nombres}}</td>
+								<td>{{miembro.Apellidos}}</td>
+								<td>{{miembro.EstadoCivil}}</td>
+								<td>{{miembro.FechaNac|date('d/m/Y')}}</td>
+								<td>{{miembro.Genero}}</td>
+								<td>{{miembro.Email}}</td>
+								<td>{{miembro.Direccion}}</td>
+								<td>{{miembro.TelefonoFijo}}</td>
+								<td>{{miembro.TelefonoMovil}}</td>
+								<td>{{miembro.Nacionalidad}}</td>
+								<td>{{miembro.Profesion}}</td>
+								<td>{{miembro.FechaAceptacion|date('d/m/Y')}}</td>
+							</tr>    
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>	
+		</div>
+	</div>
 </div>
 
 

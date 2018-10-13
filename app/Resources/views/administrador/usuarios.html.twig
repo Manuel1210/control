@@ -1,31 +1,42 @@
 {% extends 'base.html.twig' %}
 
+
 {% block body %}
 
-<h1 class="alert alert-info">Ventana de Usuarios</h1>
-<br>
-<a class="btn btn-danger" href="{{path('nuevoUsuario')}}">
-	<i class="fa fa-plus"></i> Nuevo usuario
-</a>
-<br>
+<h3 class="alert alert-info">Ventana de Usuarios</h3>
 
-<div class="container-fluid">
-	<table class=" table table-bordered">
-	<tr>
-		<th>Username</th>
-		<th>Rol</th>
-	</tr>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<a class="btn btn-danger" href="{{path('nuevoUsuario')}}">
+				<i class="fa fa-plus"></i> Nuevo usuario
+			</a>
+			<br />
+			<br />
 
-	<tbody>
-		{% for usuario in usuarios %}
-		<tr>
-			<td>{{usuario.Username}}</td>
-			<td>{{usuario.Rol}}</td>
-		</tr>    
-		{% endfor %}
-	</tbody>
-</table>
+			<div class="panel panel-primary ">
+			<div class="panel-body">
+				<table class=" table table-hover">
+					<tr>
+						<th>Username</th>
+						<th>Password</th>
+						<th>Rol</th>
+					</tr>
 
+					<tbody>
+						{% for usuario in usuarios %}
+						<tr>
+							<td>{{usuario.Username}}</td>
+							<td>{{usuario.Password}}</td>
+							<td>{{usuario.Rol}}</td>
+						</tr>    
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 

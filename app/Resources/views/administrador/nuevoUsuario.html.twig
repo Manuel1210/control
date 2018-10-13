@@ -2,13 +2,25 @@
 
 {% block body %}
 
-	<h2 class="alert alert-info">Crear nuevo usuario</h2>
+	<h3 class="alert alert-info">Crear nuevo usuario</h3>
 
-	<div class="col-md-8">
-		{{ form_start(form) }}
-		{{ form_widget(form) }}
-		<button class="btn btn-success" type="submit">Guardar Usuario</button>
-		{{ form_end(form) }}
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-2 col-md-6">
+			<div class="panel panel-primary">
+				<div class="panel-body">
+					<div class="form-group">
+						{{ form_start(form) }}
+						{{ form_widget(form) }}
+						<br/>
+						<button class="btn btn-success" type="submit">Guardar Usuario</button>
+						<a class="btn btn-xs btn-danger" href="{{path('usuarios')}}"> Regresar</a>
+						{{ form_end(form) }}
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+</div>
     
 {% endblock %}
