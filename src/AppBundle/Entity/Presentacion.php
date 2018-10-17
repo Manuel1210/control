@@ -15,11 +15,11 @@ class Presentacion
     /**
      * @var integer
      *
-     * @ORM\Column(name="idPresentacion_NiÃ±o", type="integer", nullable=false)
+     * @ORM\Column(name="idPresentacion", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idpresentacionNiã±o;
+    private $idpresentacion;
 
     /**
      * @var string
@@ -38,28 +38,28 @@ class Presentacion
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Fecha_Nac", type="date", nullable=true)
+     * @ORM\Column(name="FechaNac", type="date", nullable=true)
      */
     private $fechaNac;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Nombres_Papa", type="string", length=45, nullable=true)
+     * @ORM\Column(name="NombresPapa", type="string", length=45, nullable=true)
      */
     private $nombresPapa;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Nombres_Mama", type="string", length=45, nullable=true)
+     * @ORM\Column(name="NombresMama", type="string", length=45, nullable=true)
      */
     private $nombresMama;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Fecha_Presentacion", type="date", nullable=true)
+     * @ORM\Column(name="FechaPresentacion", type="date", nullable=true)
      */
     private $fechaPresentacion;
 
@@ -76,13 +76,13 @@ class Presentacion
 
 
     /**
-     * Get idpresentacionNiã±o
+     * Get idpresentacion
      *
      * @return integer
      */
-    public function getIdpresentacionNiã±o()
+    public function getIdpresentacion()
     {
-        return $this->idpresentacionNiã±o;
+        return $this->idpresentacion;
     }
 
     /**

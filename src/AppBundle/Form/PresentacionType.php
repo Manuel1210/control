@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 class PresentacionType extends AbstractType
 {
     /**
@@ -13,7 +15,13 @@ class PresentacionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombres')->add('apellidos')->add('fechaNac')->add('nombresPapa')->add('nombresMama')->add('fechaPresentacion')->add('usuariousuario');
+        $builder
+        ->add('nombres', textType::class, array('attr'=>array('class'=>'form-control'))) 
+        ->add('apellidos', textType::class, array('attr'=>array('class'=>'form-control')))
+        ->add('fechaNac')
+        ->add('nombresPapa', textType::class, array('attr'=>array('class'=>'form-control')))
+        ->add('nombresMama', textType::class, array('attr'=>array('class'=>'form-control')))
+        ->add('fechaPresentacion');
     }/**
      * {@inheritdoc}
      */

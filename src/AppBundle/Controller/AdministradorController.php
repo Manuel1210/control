@@ -9,6 +9,8 @@ use AppBundle\Entity\Usuario;
 use AppBundle\Entity\Miembro;
 use AppBundle\Form\MiembroType;
 use AppBundle\Form\UsuarioType;
+use AppBundle\Entity\Presentacion;
+use AppBundle\Form\PresentacionType;
 
 class AdministradorController extends Controller
 {
@@ -83,6 +85,33 @@ class AdministradorController extends Controller
 
        return $this->render('administrador/nuevoMiembro.html.twig',array("form"=>$form->createView() ));
 
+    }
+
+    public function presentacionAction(){
+      $repository = $this->getDoctrine()->getRepository(Presentacion::class);
+      $presentacion=$repository->findAll();
+
+      return $this->render('administrador/presentacion.html.twig', array('Presentacion' => $presentacion
+       ));
+    }
+
+    public function nuevaPresentacionAction(Request $request){
+      $presentacion = new Presentacion();
+
+      $form=$this->createForm(PresentacionType::class,$presentacion);
+      $user= $this->get('security.token_storage')->getToken()->getUser();
+
+      $form->handleRequest($request);
+
+      if($form->isSubmitted() && $form->isValid()){
+        $em=$this->getDoctrine()->getManager();
+        $presentacion->setUsuariousuario($user);
+
+        $em->persist($presentacion);
+        $em->flush();
+        return $this->redirectToRoute('presentacion');
+      }
+      return $this->render('administrador/nuevaPresentacion.html.twig',array("form"=>$form->createView() ));
     }
 
     

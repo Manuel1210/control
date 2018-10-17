@@ -15,7 +15,7 @@ class Presentacion
     /**
      * @var integer
      *
-     * @ORM\Column(name="idPresentacion_Niño", type="integer", nullable=false)
+     * @ORM\Column(name="idPresentacion", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */

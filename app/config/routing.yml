@@ -40,3 +40,11 @@ miembros:
 nuevoMiembro:
   path: /nuevoMiembro
   defaults: { _controller: AppBundle:Administrador:nuevoMiembro }
+
+presentacion:
+  path: /presentacion
+  defaults: {_controller: AppBundle:Administrador:presentacion }
+
+nuevaPresentacion:
+  path: /nuevaPresentacion
+  defaults: {_controller: AppBundle:Administrador:nuevaPresentacion }

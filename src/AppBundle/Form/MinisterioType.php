@@ -13,7 +13,10 @@ class MinisterioType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre')->add('fecha')->add('descripcion');
+        $builder
+        ->add('nombre')
+        ->add('fecha')
+        ->add('descripcion');
     }/**
      * {@inheritdoc}
      */

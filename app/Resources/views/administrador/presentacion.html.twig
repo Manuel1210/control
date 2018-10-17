@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<h3 class="alert alert-info">Ventana de Presentacion niños</h3>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<a class="btn btn-danger" href="{{path('nuevaPresentacion')}}">
+				<i class="fa fa-plus"></i> Nueva Presentacion
+			</a>
+			<br>
+
+			<div class="panel panel-primary ">
+				<div class="panel-body">
+					<table class=" table table-bordered">
+						<tr>
+							<th>Nombres Niño</th>
+							<th>Apellidos Niño</th>
+							<th>Fecha Nacimiento</th>
+							<th>Nombres Papa</th>
+							<th>Nombres Mama</th>
+							<th>Fecha Presentacion</th>
+						</tr>
+
+						<tbody>
+							{% for presentacion in Presentacion %}
+							<tr>
+								<td>{{presentacion.Nombres}}</td>
+								<td>{{presentacion.Apellidos}}</td>
+								<td>{{presentacion.FechaNac|date('d/m/Y')}}</td>
+								<td>{{presentacion.NombresPapa}}</td>
+								<td>{{presentacion.NombresMama}}</td>
+								<td>{{presentacion.FechaPresentacion|date('d/m/Y')}}</td>
+							</tr>    
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>	
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

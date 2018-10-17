@@ -21,7 +21,7 @@ class MiembroType extends AbstractType
             ->add('nombres', TextType::class ,array('attr' => array('class' => 'form-control')))
             ->add('apellidos', TextType::class ,array('attr' => array('class' => 'form-control')))
             ->add('estadoCivil', TextType::class ,array('attr' => array('class' => 'form-control')))
-            ->add('fechaNac', TextType::class ,array('attr' => array('class' => 'form-control')))
+            ->add('fechaNac')
             ->add('genero', TextType::class ,array('attr' => array('class' => 'form-control')))
             ->add('email', TextType::class ,array('attr' => array('class' => 'form-control')))
             ->add('direccion', TextType::class ,array('attr' => array('class' => 'form-control')))
@@ -29,7 +29,7 @@ class MiembroType extends AbstractType
             ->add('telefonoMovil', TextType::class ,array('attr' => array('class' => 'form-control')))
             ->add('nacionalidad', TextType::class ,array('attr' => array('class' => 'form-control')))
             ->add('profesion', TextType::class ,array('attr' => array('class' => 'form-control')))
-            ->add('fechaAceptacion', TextType::class ,array('attr' => array('class' => 'form-control')));
+            ->add('fechaAceptacion');
             
             //->add('profesion')
             //->add('fechaAceptacion');
