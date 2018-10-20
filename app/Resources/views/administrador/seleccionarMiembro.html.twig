@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h3 class="alert alert-info">Seleccionar Miembro</h3>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+
+			<div class="panel panel-primary ">
+				<div class="panel-body">
+					<table class=" table table-bordered">
+						<tr>
+							<th>Id</th>
+							<th>Nombres</th>
+							<th>Apellidos</th>
+							<th>Estado Civil</th>
+						</tr>
+
+						<tbody>
+							{% for miembro in miembros %}
+							<tr>
+								<td>{{miembro.idMiembro}}</td>
+								<td>{{miembro.Nombres}}</td>
+								<td>{{miembro.Apellidos}}</td>
+								<td>{{miembro.EstadoCivil}}</td>
+								<td><a class="btn btn-danger" href='{{path('nuevoBautizo', {id:miembro.idMiembro})}}'>seleccionar</a></td>
+
+								
+							</tr>    
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>	
+		</div>
+	</div>
+</div>
+
+{% endblock %}

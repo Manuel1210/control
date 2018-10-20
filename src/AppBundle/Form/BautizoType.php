@@ -6,6 +6,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\IntType;
+
 class BautizoType extends AbstractType
 {
     /**
@@ -13,7 +17,10 @@ class BautizoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('fecha')->add('miembromiembro');
+        $builder
+        ->add('fecha');
+        
+        //->add('miembro_idMiembro', IntType::class, array('sttr'=> array('class'=>'form-control')));
     }/**
      * {@inheritdoc}
      */

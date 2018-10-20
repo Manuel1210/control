@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class PresentacionType extends AbstractType
 {
@@ -18,10 +19,10 @@ class PresentacionType extends AbstractType
         $builder
         ->add('nombres', textType::class, array('attr'=>array('class'=>'form-control'))) 
         ->add('apellidos', textType::class, array('attr'=>array('class'=>'form-control')))
-        ->add('fechaNac')
+        ->add('fechaNac', DateType::class, array('attr'=>array('class'=>'form-control')))
         ->add('nombresPapa', textType::class, array('attr'=>array('class'=>'form-control')))
         ->add('nombresMama', textType::class, array('attr'=>array('class'=>'form-control')))
-        ->add('fechaPresentacion');
+        ->add('fechaPresentacion', DateType::class, array('attr'=>array('class'=>'form-control')));
     }/**
      * {@inheritdoc}
      */

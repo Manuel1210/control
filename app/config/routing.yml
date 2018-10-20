@@ -48,3 +48,15 @@ presentacion:
 nuevaPresentacion:
   path: /nuevaPresentacion
   defaults: {_controller: AppBundle:Administrador:nuevaPresentacion }
+
+bautizados:
+  path: /bautizados
+  defaults: {_controller: AppBundle:Administrador:bautizados}
+
+seleccionarMiembro:
+  path: /seleccionarMiembro
+  defaults: {_controller: AppBundle:Administrador:seleccionarMiembro}
+
+nuevoBautizo:
+  path: /nuevoBautizo/{id}
+  defaults: {_controller: AppBundle:Administrador:nuevoBautizo}

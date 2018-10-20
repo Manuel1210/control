@@ -11,6 +11,8 @@ use AppBundle\Form\MiembroType;
 use AppBundle\Form\UsuarioType;
 use AppBundle\Entity\Presentacion;
 use AppBundle\Form\PresentacionType;
+use AppBundle\Entity\Bautizo;
+use AppBundle\Form\BautizoType;
 
 class AdministradorController extends Controller
 {
@@ -111,9 +113,45 @@ class AdministradorController extends Controller
         $em->flush();
         return $this->redirectToRoute('presentacion');
       }
-      return $this->render('administrador/nuevaPresentacion.html.twig',array("form"=>$form->createView() ));
+      return $this->render('administrador/nuevaPresentacion.html.twig', array("form"=>$form->createView() ));
     }
 
-    
+
+public function bautizadosAction(){
+      $repository = $this->getDoctrine()->getRepository(Bautizo::class);
+      $bautizo=$repository->findAll();
+
+      return $this->render('administrador/bautizados.html.twig', array('Bautizo' => $bautizo
+       ));
+    }
+ 
+
+public function seleccionarMiembroAction(){
+      $repository = $this->getDoctrine()->getRepository(Miembro::class);
+      $miembros = $repository->findAll();
+      //$miembros = $repository->findOneByIdmiembro($id);
+      return $this->render('administrador/seleccionarMiembro.html.twig',array(
+      'miembros'=>$miembros
+    ));
+    }
+
+public function nuevoBautizoAction(){
+  $bautizo = new Bautizo();
+
+  $form=$this->createForm(BautizoType::class, $bautizo);
+  $user=$this->get('security.token_storage')->getToken()->getUser();
+
+  //$form->handleRequest($request);
+
+  if ($form->isSubmitted() && $form->isValid()) {
+      $em=$this->getDoctrine()->getManager();
+      //$bautizo->setUsuariousuario($user);
+
+      $em->persist($bautizo);
+      $em->flush();
+      return $this->redirectToRoute('bautizo');
+    }  
+  return $this->render('administrador/nuevoBautizo.html.twig', array("form"=>$form->createView() ));
+}
 
 }

@@ -8,6 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class UsuarioType extends AbstractType
 {
@@ -18,7 +19,7 @@ class UsuarioType extends AbstractType
     {
         $builder
         ->add('username', TextType::class ,array('attr' => array('class' => 'form-control')))
-        ->add('password', TextType::class ,array('attr' => array('class' => 'form-control')))
+        ->add('password', PasswordType::class ,array('attr' => array('class' => 'form-control')))
         ->add('rol', ChoiceType::class,array('choices'
           => array(
             'Administrador' => 'Administrador',
