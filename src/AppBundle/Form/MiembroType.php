@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-//use Symfony\Component\Form\Extension\Core\Type\date('d/m/y');
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class MiembroType extends AbstractType
 {
@@ -21,7 +21,7 @@ class MiembroType extends AbstractType
             ->add('nombres', TextType::class ,array('attr' => array('class' => 'form-control')))
             ->add('apellidos', TextType::class ,array('attr' => array('class' => 'form-control')))
             ->add('estadoCivil', TextType::class ,array('attr' => array('class' => 'form-control')))
-            ->add('fechaNac')
+            ->add('fechaNac', DateType::class, array('widget' => 'single_text', 'html5'=>'true'))
             ->add('genero', TextType::class ,array('attr' => array('class' => 'form-control')))
             ->add('email', TextType::class ,array('attr' => array('class' => 'form-control')))
             ->add('direccion', TextType::class ,array('attr' => array('class' => 'form-control')))

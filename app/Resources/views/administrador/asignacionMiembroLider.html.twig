@@ -1,8 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'submenus.html.twig' %}
 
 {% block body %}
 
-<h3 class="alert alert-info">Nuevo Bautizo</h3>
+<h3 class="alert alert-info">agregar lider </h3>
 
 <div class="container">
 	<div class="row">
@@ -13,10 +13,9 @@
 						{{ form_start(form) }}
 						{{ form_widget(form) }}
 						<br/>
-						<button class="btn btn-success" type="submit">Guardar Bautizo</button>
-						
+						<button class="btn btn-success" type="submit">Guardar Registro</button>
+						<a class="btn btn-xs btn-danger" href=" "> Regresar</a>
 						{{ form_end(form) }}
-						<a class="btn btn-xs btn-danger" href="{{path('bautizados')}}"> Regresar</a>
 					</div>
 				</div>
 			</div>

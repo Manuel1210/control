@@ -13,6 +13,8 @@ use AppBundle\Entity\Presentacion;
 use AppBundle\Form\PresentacionType;
 use AppBundle\Entity\Bautizo;
 use AppBundle\Form\BautizoType;
+use AppBundle\Entity\Ministerio;
+use AppBundle\Entity\Liderministerio;
 
 class AdministradorController extends Controller
 {
@@ -119,9 +121,9 @@ class AdministradorController extends Controller
 
 public function bautizadosAction(){
       $repository = $this->getDoctrine()->getRepository(Bautizo::class);
-      $bautizo=$repository->findAll();
+      $bautizos=$repository->findAll();
 
-      return $this->render('administrador/bautizados.html.twig', array('Bautizo' => $bautizo
+      return $this->render('administrador/bautizados.html.twig', array('bautizos' => $bautizos
        ));
     }
  
@@ -135,23 +137,66 @@ public function seleccionarMiembroAction(){
     ));
     }
 
-public function nuevoBautizoAction(){
+public function nuevoBautizoAction(Request $request){
   $bautizo = new Bautizo();
-
+  $em=$this->getDoctrine()->getManager();
   $form=$this->createForm(BautizoType::class, $bautizo);
-  $user=$this->get('security.token_storage')->getToken()->getUser();
 
-  //$form->handleRequest($request);
+  $form->handleRequest($request);
 
   if ($form->isSubmitted() && $form->isValid()) {
-      $em=$this->getDoctrine()->getManager();
-      //$bautizo->setUsuariousuario($user);
+      
 
       $em->persist($bautizo);
       $em->flush();
-      return $this->redirectToRoute('bautizo');
+      return $this->redirectToRoute('bautizados');
     }  
   return $this->render('administrador/nuevoBautizo.html.twig', array("form"=>$form->createView() ));
 }
 
+
+public function ministerioAction(){
+  $repository = $this->getDoctrine()-> getRepository(Ministerio::class);
+  $ministerio= $repository->findAll();
+
+  return $this->render('administrador/ministerio.html.twig', array('ministerios'=>$ministerio));
+}
+
+public function asignarMiembroAction(){
+      $repository = $this->getDoctrine()->getRepository(Miembro::class);
+      $miembros = $repository->findAll();
+
+      return $this->render('administrador/asignarMiembro.html.twig', array('miembros'=>$miembros
+      ));
+    }
+
+public function asignarLiderAction(){
+      $repository = $this->getDoctrine()->getRepository(Miembro::class);
+      $miembros = $repository->findAll();
+
+      return $this->render('administrador/asignarLider.html.twig', array('miembros'=>$miembros
+      ));
+    }
+
+
+  public function asignacionLiderMinisterioAction($id){
+    $liderministerio = new Liderministerio();
+  $form=$this->createForm(LiderministerioType::class, $liderministerio);
+
+  $form->handleRequest($request);
+
+  if ($form->isSubmitted() && $form->isValid()) {
+      $em=$this->getDoctrine()->getManager();
+      $em->persist($liderministerio);
+
+      $em->flush();
+      return $this->redirectToRoute('asignacionMiembroLider');
+    }  
+  return $this->render('administrador/asignacionMiembroLider.html.twig', array("form"=>$form->createView() ));
+  }
+
+
+  public function asignarMiembroMinisterio($id){
+
+  }
 }

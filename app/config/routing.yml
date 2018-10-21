@@ -58,5 +58,21 @@ seleccionarMiembro:
   defaults: {_controller: AppBundle:Administrador:seleccionarMiembro}
 
 nuevoBautizo:
-  path: /nuevoBautizo/{id}
+  path: /nuevoBautizo
   defaults: {_controller: AppBundle:Administrador:nuevoBautizo}
+
+ministerio:
+  path: /ministerio
+  defaults: {_controller: AppBundle:Administrador:ministerio}
+
+asignarMiembro:
+  path: /asignarMiembro/{id}
+  defaults: {_controller: AppBundle:Administrador:asignarMiembro}
+
+asignarLider:
+  path: /asignarLider/{id}
+  defaults: {_controller: AppBundle:Administrador:asignarLider}
+
+  asignacionLiderMinisterio:
+  path: /asignacionLiderMinisterio/{id}
+  defaults: {_controller: AppBundle:Administrador:asignacionLiderMiembro}

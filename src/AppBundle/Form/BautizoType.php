@@ -9,6 +9,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use AppBundle\Entity\Miembro;
 
 class BautizoType extends AbstractType
 {
@@ -18,9 +20,21 @@ class BautizoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('fecha');
-        
-        //->add('miembro_idMiembro', IntType::class, array('sttr'=> array('class'=>'form-control')));
+        //->add('fecha');
+        ->add('fecha', DateType::class, array('attr' => array('class' => 'form-control'),'widget' => 'single_text', 'html5'=>'true','label'=>'Fecha bautizo'
+        ))
+        ->add('miembromiembro', EntityType::class, array(
+    // looks for choices from this entity
+    'class' => 'AppBundle:Miembro',
+    // uses the User.username property as the visible option string
+    'choice_label' => 'Nombres',
+    'label'=>"Miembro",
+    'attr' => array('class' => 'form-control')
+
+    // used to render a select box, check boxes or radios
+    // 'multiple' => true,
+    // 'expanded' => true,
+));
     }/**
      * {@inheritdoc}
      */

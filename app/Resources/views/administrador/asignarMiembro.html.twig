@@ -1,0 +1,41 @@
+{% extends 'submenus.html.twig' %}
+
+{% block body %}
+
+<h3 class="alert alert-info">Asignar Miembro a un ministerio</h3>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<br>
+
+			<div class="panel panel-primary ">
+				<div class="panel-body">
+					<table class=" table table-bordered">
+						<tr>
+							<th>Nombres</th>
+							<th>Apellidos</th>
+							<th>Fecha Aceptacion</th>
+						</tr>
+
+						<tbody>
+							{% for miembro in miembros %}
+							<tr>
+								<td>{{miembro.Nombres}}</td>
+								<td>{{miembro.Apellidos}}</td>
+								<td>{{miembro.FechaAceptacion|date('d/m/Y')}}</td>
+								<td><a class="btn btn-danger" href=''>Asignar Miembro</a></td>
+								<td><a class="btn btn-danger" href=''>Detalle Miembro</a></td>
+
+													
+							</tr>    
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>	
+		</div>
+	</div>
+</div>
+
+{% endblock %}

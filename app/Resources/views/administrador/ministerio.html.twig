@@ -1,0 +1,43 @@
+
+{% extends 'submenus.html.twig' %}
+
+
+{% block body %}
+
+<h3 class="alert alert-info">Ventana de asignacion</h3>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<br>
+
+			<div class="panel panel-primary ">
+				<div class="panel-body">
+					<table class=" table table-bordered">
+						<tr>
+							<th>Nombre Ministerio</th>
+							<th>Fecha</th>
+							<th>Descripcion</th>
+						</tr>
+
+						<tbody>
+							{% for ministerio in ministerios %}
+							<tr>
+								<td>{{ministerio.Nombre}}</td>
+								<td>{{ministerio.Fecha|date('d/m/Y')}}</td>
+								<td>{{ministerio.Descripcion}}</td>
+
+								<td><a class="btn btn-danger" href='{{path('asignarMiembro', {id:ministerio.idMinisterio})}}'>Asignar Miembro</a></td>
+								<td><a class="btn btn-danger" href='{{path('asignarLider', {id:ministerio.idMinisterio})}}'>Asignar Lider</a></td>
+								
+							</tr>    
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>	
+		</div>
+	</div>
+</div>
+
+{% endblock %}

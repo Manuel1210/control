@@ -13,7 +13,9 @@ class LiderministerioType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('estado')->add('miembromiembro')->add('ministerioministerio');
+        $builder
+        ->add('estado')
+        ->add('miembromiembro');
     }/**
      * {@inheritdoc}
      */

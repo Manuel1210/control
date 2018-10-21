@@ -6,8 +6,8 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<a class="btn btn-danger" href="{{path('seleccionarMiembro')}}">
-				<i class="fa fa-plus"></i> Nuevo miembro
+			<a class="btn btn-danger" href="{{path('nuevoBautizo')}}">
+				<i class="fa fa-plus"></i> Nuevo Bautizo
 			</a>
 			<br>
 
@@ -15,16 +15,15 @@
 				<div class="panel-body">
 					<table class=" table table-bordered">
 						<tr>
-							<th>IdMiembro</th>
 							<th>Fecha</th>
 							<th>Id Miembro</th>
 						</tr>
 
 						<tbody>
-							{% for bautizo in Bautizo %}
+							{% for bautizo in bautizos %}
 							<tr>
-								<td>{{bautizo.IdBautizo}}</td>
 								<td>{{bautizo.Fecha|date('d/m/Y')}} </td>
+								<td>{{bautizo.Miembromiembro.Nombres}}</td>
 
 							</tr>    
 							{% endfor %}
