@@ -63,16 +63,16 @@ nuevoBautizo:
 
 ministerio:
   path: /ministerio
-  defaults: {_controller: AppBundle:Administrador:ministerio}
+  defaults: { _controller: AppBundle:Administrador:ministerio }
 
 asignarMiembro:
   path: /asignarMiembro/{id}
-  defaults: {_controller: AppBundle:Administrador:asignarMiembro}
+  defaults: { _controller: AppBundle:Administrador:asignarMiembro }
 
 asignarLider:
   path: /asignarLider/{id}
-  defaults: {_controller: AppBundle:Administrador:asignarLider}
+  defaults: { _controller: AppBundle:Administrador:asignarLider }
 
-  asignacionLiderMinisterio:
-  path: /asignacionLiderMinisterio/{id}
-  defaults: {_controller: AppBundle:Administrador:asignacionLiderMiembro}
+cambioLiderMinisterio:
+  path: /cambioLiderMinisterio/{id}
+  defaults: {_controller: AppBundle:Administrador:cambioLiderMiembro}

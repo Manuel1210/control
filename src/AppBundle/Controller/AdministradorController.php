@@ -162,7 +162,7 @@ public function ministerioAction(){
   return $this->render('administrador/ministerio.html.twig', array('ministerios'=>$ministerio));
 }
 
-public function asignarMiembroAction(){
+public function asignarMiembroAction($id){
       $repository = $this->getDoctrine()->getRepository(Miembro::class);
       $miembros = $repository->findAll();
 
@@ -170,7 +170,7 @@ public function asignarMiembroAction(){
       ));
     }
 
-public function asignarLiderAction(){
+public function asignarLiderAction($id){
       $repository = $this->getDoctrine()->getRepository(Miembro::class);
       $miembros = $repository->findAll();
 
