@@ -76,3 +76,11 @@ asignarLider:
 cambioLiderMinisterio:
   path: /cambioLiderMinisterio/{id}
   defaults: {_controller: AppBundle:Administrador:cambioLiderMiembro}
+
+tesoreriaAdministrador:
+  path: /tesoreriaAdministrador
+  defaults: { _controller: AppBundle:Administrador:tesoreriaAdministrador }
+
+reportesAdministrador:
+  path: /reportesAdministrador
+  defaults: { _controller: AppBundle:Administrador:reportesAdministrador }

@@ -199,4 +199,12 @@ public function asignarLiderAction($id){
   public function asignarMiembroMinisterio($id){
 
   }
+
+  public function tesoreriaAdministradorAction(){
+    return $this->render("administrador/tesoreriaAdministrador.html.twig");
+  }
+
+  public function reportesAdministradorAction(){
+    return $this->render('administrador/reportesAdministrador.html.twig');
+  }
 }

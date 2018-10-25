@@ -9,9 +9,11 @@
       
     <!-- CSS de Bootstrap -->
     <link href="{{asset('public/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" media="screen">
+    <link href="{{asset('public/css/style.css')}}" type="txt/css" rel="stylesheet" media="screen">
     <link href="{{asset('public/vendor/fontawesome/css/all.css')}}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/login.css')}}" /> 
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/menu.css')}}">
+
+    <!--<link rel="stylesheet" type="text/css" href="{{ asset('public/css/login.css')}}" /> 
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/menu.css')}}">-->
 
 
 
@@ -32,54 +34,60 @@
   <body>
 {% endblock %}
   {% block nav_menu %}
-    <header id="cabecera">
-        <h2>BIENVENIDO AL MENU DEL SISTEMA</h2>
-    </header>
+    <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+  
+  <div class="collapse navbar-collapse justify-content-between" id="navbar">
+    <div class="navbar-nav">
+        <!-- registros -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            <i class="fas fa-clipboard-list fa-2x"></i> Registros
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{path('miembros')}}">Miembro</a>
+            <a class="dropdown-item" href="{{path('usuarios')}}">Usuario</a>
+            <a class="dropdown-item" href="{{path('bautizados')}}">Bautizo</a>
+            <a class="dropdown-item" href="{{path('ministerio')}}">Ministerio</a>
+            <a class="dropdown-item" href="{{path('presentacion')}}">Presentacion</a>
+          </div>
+        </li>
+        <!-- Tesoreria -->
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('tesoreriaAdministrador')}}">
+             <i class="far fa-money-bill-alt fa-2x"></i> Tesoreria
+            </a>
+        </li>
+        <!-- Tesoreria -->
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('reportesAdministrador')}}">
+             <i class="fas fa-chart-pie fa-2x"></i> Reportes
+            </a>
+        </li>
 
-    <div id="menu">    
-        <ul class="nav">
-
-            <li><a href="{{path('administradorPage')}}" >Inicio</a> </li>
-            
-            <li><a href="#" class="dropdown-toggle active">Registros </a>
-                <ul>
-                    <li><a href="{{path('miembros')}}">Miembro</a></li>
-                    <li><a href="{{path('usuarios')}}">Usuario</a></li>
-                    <li><a href="{{path('bautizados')}}">Bautizo</a></li>
-                    <li><a href="">Lider Ministerio</a></li>
-                    <li><a href="{{path('ministerio')}}">Miembros Por Ministerio</a></li>
-                    <li><a href="{{path('presentacion')}}">Presentacion</a></li>
-                </ul>
-            </li>
-
-            <li><a href="#" class="dropdown-toggle active">Tesorería</a>
-                 <ul>
-                    <li><a href=" " >Registro Ingresos</a></li>
-                    <li><a href=" ">Registro de Gastos</a></li>
-                </ul>
-            </li>
-
-            <li><a href="#" class="dropdown-toggle active">Reporte</a>
-                <ul>
-                    <li><a href=" ">Reporte Ofrenda</a></li>
-                    <li><a href=" ">Reporte Miembros</a></li>
-                </ul>
-            </li>
-
-            <li><a href="{{path('logout')}}">salir</a></li>
-
-        </ul>
     </div>
+    <div class="navbar-nav">
+      <a href="#" class="nav-item nav-link">
+        <i class="fa fa-user"></i> {{app.user.username}}
+      </a>
+      <a class="nav-item nav-link" href="{{path('logout')}}">
+        <i class="fas fa-sign-out-alt"></i> Cerrar Sesion
+      </a>
+    </div>
+  </div>
+    
+</nav>
 
-</br>
-</br>
+    
   {% endblock %}
 
-
+    <div class="container-fluid" style="margin-top:70px;">
+    <div class="row">
     {% block body %}
 
 
     {% endblock %}
+    </div>
+    </div>
 
 
 
