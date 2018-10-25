@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detalles ministerio{% endblock %}
+
+
+
+{% block body %}
+<div class="container-fluid">
+    <h3 class="alert alert-info"> {{ministerio.Nombre}}</h3>
+    <button class="btn btn-success">
+        <i class="fas fa-user-plus"></i> Agregar Miembro
+    </button>
+    <button class="btn btn-success">
+        <i class="fas fa-sync-alt"></i> Cambiar Lider
+    </button>
+    <br><br>
+</div>
+
+<div class="card bg-info text-black container">
+  <div class="card-header"><h4>Lider Ministerio: {{lider[0].Miembromiembro.Nombres}} {{lider[0].Miembromiembro.Apellidos}}</h4></div>
+  <div class="card-body" style="background-color: white;">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Genero</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for miembro in miembros %}
+            <tr>
+                <td>{{miembro.Nombres}}</td>
+                <td>{{miembro.Apellidos}}</td>
+                <td>{{miembro.Genero}}</td>
+            </tr>
+        {% endfor %}
+            
+        </tbody>
+    </table>
+    
+  </div>
+</div>
+
+{% endblock %}

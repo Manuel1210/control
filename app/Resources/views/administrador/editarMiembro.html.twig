@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar Miembro{% endblock %}
+
+
+{% block body %}
+    <div class="container-fluid">
+      <h3 class="alert alert-info">Editar Miembro</h3>
+  </div>
+
+  <div class="container">
+      {{ form_start(form, {attr: {'class': 'form-group'} }) }}
+        {{ form_widget(form) }}
+        <br>
+        <button type="submit" class="btn btn-primary">
+          <i class="fa fa-floppy-o fa-2x" aria-hidden="true"></i>  Editar miembro
+        </button>
+      {{ form_end(form) }}
+      <a class="btn btn-danger" href="{{path('miembros')}}">
+        <i class="fa fa-cancel"></i> Cancelar
+      </a>
+  </div>
+
+
+{% endblock %}
+
+

@@ -57,6 +57,37 @@ class AdministradorController extends Controller
 
     }
 
+    public function editarUsuarioAction(Request $request,$id){
+      $em = $this->getDoctrine()->getManager();
+
+      $usuario = $this->getDoctrine()->getRepository(Usuario::class)->findOneByIdusuario($id);
+
+      $form = $this->createForm(UsuarioType::class,$usuario,array('action'=>$this->generateUrl('editarUsuario',array('id'=>$usuario->getIdusuario())),
+        'method'=>'PUT'));
+
+      $form->handleRequest($request);
+
+
+        if($form->isSubmitted() && $form->isValid()){
+
+          $password=$form->get('password')->getData();
+          if(!empty($password)){
+            $opciones = ['cost' => 4,];
+            $usuario->setPassword(password_hash($password, PASSWORD_BCRYPT, $opciones));
+          }else{
+            $recoverPass=$this->recoverPass($id);
+            $usuario->setPassword($recoverPass[0]['password']);
+          }
+
+          $em->flush();
+          return $this->redirectToRoute('usuarios');
+        }
+
+      return $this->render('administrador/editarUsuario.html.twig',
+      array('usuario'=>$usuario, 'form'=>$form->createView()));
+    }
+
+
     public function miembrosAction(){
       $repository = $this->getDoctrine()->getRepository(Miembro::class);
       $miembros = $repository->findAll();
@@ -80,6 +111,7 @@ class AdministradorController extends Controller
         // but, the original `$task` variable has also been updated
         $em = $this->getDoctrine()->getManager();
         $miembro->setUsuariousuario($user);
+        $miembro->setFechaaceptacion(new \DateTime("now"));
 
         
         $em->persist($miembro);
@@ -89,6 +121,27 @@ class AdministradorController extends Controller
 
        return $this->render('administrador/nuevoMiembro.html.twig',array("form"=>$form->createView() ));
 
+    }
+
+    public function editarMiembroAction(Request $request,$id){
+      $em = $this->getDoctrine()->getManager();
+
+      $miembro = $this->getDoctrine()->getRepository(Miembro::class)->findOneByIdmiembro($id);
+
+      $form = $this->createForm(MiembroType::class,$miembro,array('action'=>$this->generateUrl('editarMiembro',array('id'=>$miembro->getIdmiembro())),
+        'method'=>'PUT'));
+
+      $form->handleRequest($request);
+
+
+        if($form->isSubmitted() && $form->isValid()){
+
+          $em->flush();
+          return $this->redirectToRoute('miembros');
+        }
+
+      return $this->render('administrador/editarMiembro.html.twig',
+      array('miembro'=>$miembro, 'form'=>$form->createView()));
     }
 
     public function presentacionAction(){
@@ -160,6 +213,30 @@ public function ministerioAction(){
   $ministerio= $repository->findAll();
 
   return $this->render('administrador/ministerio.html.twig', array('ministerios'=>$ministerio));
+}
+
+public function detallesMinisterioAction($id){
+  $ministerio = $this->getDoctrine()-> getRepository(Ministerio::class)->findOneByIdministerio($id);
+
+  $repositorylider = $this->getDoctrine()->getRepository(Liderministerio::class);
+  
+  $query = $repositorylider->createQueryBuilder('l')
+      ->where('l.ministerioministerio = :ministerio')
+      ->andWhere('l.estado = 1')
+      ->setParameter('ministerio', $ministerio)
+      ->getQuery();
+
+  $lider = $query->getResult();
+
+
+  $miembros = $this->getDoctrine()-> getRepository(Miembro::class)->findByMinisterioministerio($ministerio);
+
+  return $this->render('administrador/detallesMinisterio.html.twig',array(
+    'ministerio'=>$ministerio,
+    'lider' => $lider,
+    'miembros' => $miembros
+  ));  
+
 }
 
 public function asignarMiembroAction($id){

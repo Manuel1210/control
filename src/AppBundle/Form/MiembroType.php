@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 
@@ -21,15 +22,21 @@ class MiembroType extends AbstractType
             ->add('nombres', TextType::class ,array('attr' => array('class' => 'form-control')))
             ->add('apellidos', TextType::class ,array('attr' => array('class' => 'form-control')))
             ->add('estadoCivil', TextType::class ,array('attr' => array('class' => 'form-control')))
-            ->add('fechaNac', DateType::class, array('widget' => 'single_text', 'html5'=>'true'))
-            ->add('genero', TextType::class ,array('attr' => array('class' => 'form-control')))
+            ->add('fechaNac', DateType::class, array('attr'=>array('class'=>'form-control'),'widget' => 'single_text', 'html5'=>'true'))
+            ->add('genero', ChoiceType::class, array(
+                'choices'  => array(
+                    'Masculino' => "Masculino",
+                    'Femenino' => "Femenino"
+                ),
+                'label' => "Genero",
+                'attr' => array('class' => 'form-control')
+            ))
             ->add('email', TextType::class ,array('attr' => array('class' => 'form-control')))
             ->add('direccion', TextType::class ,array('attr' => array('class' => 'form-control')))
             ->add('telefonoFijo', TextType::class ,array('attr' => array('class' => 'form-control')))
             ->add('telefonoMovil', TextType::class ,array('attr' => array('class' => 'form-control')))
             ->add('nacionalidad', TextType::class ,array('attr' => array('class' => 'form-control')))
-            ->add('profesion', TextType::class ,array('attr' => array('class' => 'form-control')))
-            ->add('fechaAceptacion');
+            ->add('profesion', TextType::class ,array('attr' => array('class' => 'form-control')));
             
             //->add('profesion')
             //->add('fechaAceptacion');

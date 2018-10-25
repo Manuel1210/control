@@ -2,20 +2,12 @@
 
 {% block body %}
 
-	<div class="container-fluid">
-		<h3 class="alert alert-info">Ventana de Miembros</h3>
-
-<div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<a class="btn btn-danger" href="{{path('nuevoMiembro')}}">
+<div class="container-fluid">
+	<h3 class="alert alert-info">Ventana de Miembros</h3>
+	<a class="btn btn-danger" href="{{path('nuevoMiembro')}}">
 				<i class="fa fa-plus"></i> Nuevo miembro
-			</a>
-			<br>
-
-			<div class="panel panel-primary ">
-				<div class="panel-body">
-					<table class=" table table-bordered">
+			</a><br><br>
+<table class=" table table-bordered">
 						<tr>
 							<th>Nombres</th>
 							<th>Apellidos</th>
@@ -46,10 +38,30 @@
 								<td>{{miembro.Nacionalidad}}</td>
 								<td>{{miembro.Profesion}}</td>
 								<td>{{miembro.FechaAceptacion|date('d/m/Y')}}</td>
+								<td>
+									<a class="btn btn-default" type="button" href="{{path('editarMiembro',{id:miembro.Idmiembro})}}">
+										<i class="fas fa-user-edit fa-2x"></i> Editar
+									</a>
+								</td>
 							</tr>    
 							{% endfor %}
 						</tbody>
-					</table>
+					</table>	
+
+</div>
+
+	<div class="container-fluid">
+		
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			
+			<br>
+
+			<div class="panel panel-primary ">
+				<div class="panel-body">
+					
 				</div>
 			</div>	
 		</div>

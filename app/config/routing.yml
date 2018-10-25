@@ -33,6 +33,10 @@ nuevoUsuario:
   path: /nuevoUsuario
   defaults: { _controller: AppBundle:Administrador:nuevoUsuario }
 
+editarUsuario:
+  path: /editarUsuario/{id}
+  defaults: { _controller: AppBundle:Administrador:editarUsuario}
+
 miembros:
   path: /miembros
   defaults: { _controller: AppBundle:Administrador:miembros }
@@ -40,6 +44,10 @@ miembros:
 nuevoMiembro:
   path: /nuevoMiembro
   defaults: { _controller: AppBundle:Administrador:nuevoMiembro }
+
+editarMiembro:
+  path: /editarMiembro{id}
+  defaults: { _controller: AppBundle:Administrador:editarMiembro }
 
 presentacion:
   path: /presentacion
@@ -64,6 +72,10 @@ nuevoBautizo:
 ministerio:
   path: /ministerio
   defaults: { _controller: AppBundle:Administrador:ministerio }
+
+detallesMinisterio:
+  path: /detallesMinisterio/{id}
+  defaults: { _controller: AppBundle:Administrador:detallesMinisterio }
 
 asignarMiembro:
   path: /asignarMiembro/{id}

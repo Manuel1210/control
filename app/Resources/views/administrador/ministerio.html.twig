@@ -27,8 +27,11 @@
 								<td>{{ministerio.Fecha|date('d/m/Y')}}</td>
 								<td>{{ministerio.Descripcion}}</td>
 
-								<td><a class="btn btn-danger" href='{{path('asignarMiembro', {id:ministerio.idMinisterio})}}'>Asignar Miembro</a></td>
-								<td><a class="btn btn-danger" href='{{path('asignarLider', {id:ministerio.idMinisterio})}}'>Asignar Lider</a></td>
+								<td>
+									<a class="btn btn-info" href='{{path('detallesMinisterio', {id:ministerio.idMinisterio})}}'>
+										<i class="fas fa-info-circle fa-2x"></i> Detalles
+									</a>
+								</td>
 								
 							</tr>    
 							{% endfor %}
