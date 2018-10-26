@@ -22,9 +22,9 @@ class Bautizo
     private $idbautizo;
 
     /**
-     * @var \Date
+     * @var \DateTime
      *
-     * @ORM\Column(name="Fecha", type="date", nullable=true)
+     * @ORM\Column(name="fecha", type="date", nullable=true)
      */
     private $fecha;
 

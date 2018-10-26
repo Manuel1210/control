@@ -31,14 +31,14 @@ class Ministerio
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Fecha", type="date", nullable=true)
+     * @ORM\Column(name="fecha", type="date", nullable=true)
      */
     private $fecha;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Descripcion", type="string", length=200, nullable=true)
+     * @ORM\Column(name="descripcion", type="string", length=200, nullable=true)
      */
     private $descripcion;
 

@@ -19,49 +19,49 @@ class Presentacion
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idpresentacionNiã±o;
+    private $idpresentacion;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Nombres", type="string", length=45, nullable=true)
+     * @ORM\Column(name="nombres", type="string", length=45, nullable=true)
      */
     private $nombres;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Apellidos", type="string", length=45, nullable=true)
+     * @ORM\Column(name="apellidos", type="string", length=45, nullable=true)
      */
     private $apellidos;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Fecha_Nac", type="date", nullable=true)
+     * @ORM\Column(name="fechaNac", type="date", nullable=true)
      */
-    private $fechaNac;
+    private $fechanac;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Nombres_Papa", type="string", length=45, nullable=true)
+     * @ORM\Column(name="nombresPapa", type="string", length=50, nullable=true)
      */
-    private $nombresPapa;
+    private $nombrespapa;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Nombres_Mama", type="string", length=45, nullable=true)
+     * @ORM\Column(name="nombresMama", type="string", length=50, nullable=true)
      */
-    private $nombresMama;
+    private $nombresmama;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Fecha_Presentacion", type="date", nullable=true)
+     * @ORM\Column(name="fechaPresentacion", type="date", nullable=true)
      */
-    private $fechaPresentacion;
+    private $fechapresentacion;
 
     /**
      * @var \Usuario

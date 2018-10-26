@@ -93,6 +93,15 @@ tesoreriaAdministrador:
   path: /tesoreriaAdministrador
   defaults: { _controller: AppBundle:Administrador:tesoreriaAdministrador }
 
+nuevaTransaccion:
+  path: /nuevaTransaccion
+  defaults: { _controller: AppBundle:Administrador:nuevaTransaccion }
+
+
+nuevoTipotransaccion:
+  path: /nuevoTipotransaccion
+  defaults: { _controller: AppBundle:Administrador:nuevoTipotransaccion }
+
 reportesAdministrador:
   path: /reportesAdministrador
   defaults: { _controller: AppBundle:Administrador:reportesAdministrador }

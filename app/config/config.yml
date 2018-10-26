@@ -69,3 +69,14 @@ swiftmailer:
 sensio_framework_extra:
    router:
         annotations: false
+
+#snapy for pdf reports
+knp_snappy:
+    pdf:
+        enabled:    true
+        #binary:     /usr/local/bin/wkhtmltopdf #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\"" for Windows users
+        options:    []
+    image:
+        enabled:    true
+        #binary:     /usr/local/bin/wkhtmltoimage #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\"" for Windows users
+        options:    []

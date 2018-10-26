@@ -40,14 +40,14 @@ class Miembro
      *
      * @ORM\Column(name="estadoCivil", type="string", length=10, nullable=true)
      */
-    private $estadoCivil;
+    private $estadocivil;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="fechaNac", type="date", nullable=true)
      */
-    private $fechaNac;
+    private $fechanac;
 
     /**
      * @var string
@@ -75,14 +75,14 @@ class Miembro
      *
      * @ORM\Column(name="telefonoFijo", type="string", length=20, nullable=true)
      */
-    private $telefonoFijo;
+    private $telefonofijo;
 
     /**
      * @var string
      *
      * @ORM\Column(name="telefonoMovil", type="string", length=20, nullable=true)
      */
-    private $telefonoMovil;
+    private $telefonomovil;
 
     /**
      * @var string
@@ -103,7 +103,7 @@ class Miembro
      *
      * @ORM\Column(name="fechaAceptacion", type="date", nullable=true)
      */
-    private $fechaAceptacion;
+    private $fechaaceptacion;
 
     /**
      * @var \Usuario

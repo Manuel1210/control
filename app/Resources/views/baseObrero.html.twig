@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}{% endblock %}</title>
+      
+    <!-- CSS de Bootstrap -->
+    <link href="{{asset('public/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" media="screen">
+    <link href="{{asset('public/css/style.css')}}" type="txt/css" rel="stylesheet" media="screen">
+    <link href="{{asset('public/vendor/fontawesome/css/all.css')}}" rel="stylesheet">
+
+    <!--<link rel="stylesheet" type="text/css" href="{{ asset('public/css/login.css')}}" /> 
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/menu.css')}}">-->
+
+
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+    <script src="{{asset('public/vendor/jquery/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{asset('public/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+
+    {% block script_encabezado %}
+
+    {% endblock %}
+
+  </head>
+
+{% block style_body %}
+  <body>
+{% endblock %}
+  {% block nav_menu %}
+    <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+  
+  <div class="collapse navbar-collapse justify-content-between" id="navbar">
+    <div class="navbar-nav">
+        
+        
+        <!-- Tesoreria -->
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('reportesAdministrador')}}">
+             <i class="fas fa-chart-pie fa-2x"></i> Reportes
+            </a>
+        </li>
+
+    </div>
+    <div class="navbar-nav">
+      <a href="#" class="nav-item nav-link">
+        <i class="fa fa-user"></i> {{app.user.username}}
+      </a>
+      <a class="nav-item nav-link" href="{{path('logout')}}">
+        <i class="fas fa-sign-out-alt"></i> Cerrar Sesion
+      </a>
+    </div>
+  </div>
+    
+</nav>
+
+    
+  {% endblock %}
+
+    <div class="container-fluid" style="margin-top:70px;">
+    <div class="row">
+    {% block body %}
+
+
+    {% endblock %}
+    </div>
+    </div>
+
+
+
+    <!-- Librería jQuery requerida por los plugins de JavaScript -->
+    <!--<script src="{{asset('public/vendor/jquery/jquery-3.3.1.min.js')}}"></script>-->
+
+    <!-- Todos los plugins JavaScript de Bootstrap (también puedes
+         incluir archivos JavaScript individuales de los únicos
+         plugins que utilices) -->
+
+    {% block script_extra %}
+
+    {% endblock %}
+  </body>
+
+</html>
+

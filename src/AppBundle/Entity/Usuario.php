@@ -1,13 +1,8 @@
 <?php
-
 namespace AppBundle\Entity;
-
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
-
-
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Usuario
  *
@@ -24,30 +19,24 @@ class Usuario implements UserInterface
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idusuario;
-
     /**
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=45, nullable=true)
      */
     private $username;
-
     /**
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=200, nullable=true)
      */
     private $password;
-
     /**
      * @var string
      *
      * @ORM\Column(name="rol", type="string", length=45, nullable=true)
      */
     private $rol;
-
-
-
     /**
      * Get idusuario
      *
@@ -57,7 +46,6 @@ class Usuario implements UserInterface
     {
         return $this->idusuario;
     }
-
     /**
      * Set username
      *
@@ -68,10 +56,8 @@ class Usuario implements UserInterface
     public function setUsername($username)
     {
         $this->username = $username;
-
         return $this;
     }
-
     /**
      * Get username
      *
@@ -81,7 +67,6 @@ class Usuario implements UserInterface
     {
         return $this->username;
     }
-
     /**
      * Set password
      *
@@ -92,10 +77,8 @@ class Usuario implements UserInterface
     public function setPassword($password)
     {
         $this->password = $password;
-
         return $this;
     }
-
     /**
      * Get password
      *
@@ -105,7 +88,6 @@ class Usuario implements UserInterface
     {
         return $this->password;
     }
-
     /**
      * Set rol
      *
@@ -116,10 +98,8 @@ class Usuario implements UserInterface
     public function setRol($rol)
     {
         $this->rol = $rol;
-
         return $this;
     }
-
     /**
      * Get rol
      *
@@ -129,19 +109,14 @@ class Usuario implements UserInterface
     {
         return $this->rol;
     }
-
     //login
     
     public function getRoles(){
         return array($this->getRol());
     }
-
     public function getSalt(){
         return null;
     }
-
     public function eraseCredentials(){
-
     }
-
 }

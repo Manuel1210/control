@@ -24,14 +24,14 @@ class Caja
     /**
      * @var float
      *
-     * @ORM\Column(name="Total", type="float", precision=10, scale=0, nullable=true)
+     * @ORM\Column(name="total", type="float", precision=10, scale=0, nullable=true)
      */
     private $total;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Fecha", type="date", nullable=true)
+     * @ORM\Column(name="fecha", type="date", nullable=true)
      */
     private $fecha;
 

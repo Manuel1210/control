@@ -24,44 +24,44 @@ class Presentacion
     /**
      * @var string
      *
-     * @ORM\Column(name="Nombres", type="string", length=45, nullable=true)
+     * @ORM\Column(name="nombres", type="string", length=45, nullable=true)
      */
     private $nombres;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Apellidos", type="string", length=45, nullable=true)
+     * @ORM\Column(name="apellidos", type="string", length=45, nullable=true)
      */
     private $apellidos;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="FechaNac", type="date", nullable=true)
+     * @ORM\Column(name="fechaNac", type="date", nullable=true)
      */
-    private $fechaNac;
+    private $fechanac;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="NombresPapa", type="string", length=45, nullable=true)
+     * @ORM\Column(name="nombresPapa", type="string", length=50, nullable=true)
      */
-    private $nombresPapa;
+    private $nombrespapa;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="NombresMama", type="string", length=45, nullable=true)
+     * @ORM\Column(name="nombresMama", type="string", length=50, nullable=true)
      */
-    private $nombresMama;
+    private $nombresmama;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="FechaPresentacion", type="date", nullable=true)
+     * @ORM\Column(name="fechaPresentacion", type="date", nullable=true)
      */
-    private $fechaPresentacion;
+    private $fechapresentacion;
 
     /**
      * @var \Usuario
@@ -134,99 +134,99 @@ class Presentacion
     }
 
     /**
-     * Set fechaNac
+     * Set fechanac
      *
-     * @param \DateTime $fechaNac
+     * @param \DateTime $fechanac
      *
      * @return Presentacion
      */
-    public function setFechaNac($fechaNac)
+    public function setFechanac($fechanac)
     {
-        $this->fechaNac = $fechaNac;
+        $this->fechanac = $fechanac;
 
         return $this;
     }
 
     /**
-     * Get fechaNac
+     * Get fechanac
      *
      * @return \DateTime
      */
-    public function getFechaNac()
+    public function getFechanac()
     {
-        return $this->fechaNac;
+        return $this->fechanac;
     }
 
     /**
-     * Set nombresPapa
+     * Set nombrespapa
      *
-     * @param string $nombresPapa
+     * @param string $nombrespapa
      *
      * @return Presentacion
      */
-    public function setNombresPapa($nombresPapa)
+    public function setNombrespapa($nombrespapa)
     {
-        $this->nombresPapa = $nombresPapa;
+        $this->nombrespapa = $nombrespapa;
 
         return $this;
     }
 
     /**
-     * Get nombresPapa
+     * Get nombrespapa
      *
      * @return string
      */
-    public function getNombresPapa()
+    public function getNombrespapa()
     {
-        return $this->nombresPapa;
+        return $this->nombrespapa;
     }
 
     /**
-     * Set nombresMama
+     * Set nombresmama
      *
-     * @param string $nombresMama
+     * @param string $nombresmama
      *
      * @return Presentacion
      */
-    public function setNombresMama($nombresMama)
+    public function setNombresmama($nombresmama)
     {
-        $this->nombresMama = $nombresMama;
+        $this->nombresmama = $nombresmama;
 
         return $this;
     }
 
     /**
-     * Get nombresMama
+     * Get nombresmama
      *
      * @return string
      */
-    public function getNombresMama()
+    public function getNombresmama()
     {
-        return $this->nombresMama;
+        return $this->nombresmama;
     }
 
     /**
-     * Set fechaPresentacion
+     * Set fechapresentacion
      *
-     * @param \DateTime $fechaPresentacion
+     * @param \DateTime $fechapresentacion
      *
      * @return Presentacion
      */
-    public function setFechaPresentacion($fechaPresentacion)
+    public function setFechapresentacion($fechapresentacion)
     {
-        $this->fechaPresentacion = $fechaPresentacion;
+        $this->fechapresentacion = $fechapresentacion;
 
         return $this;
     }
 
     /**
-     * Get fechaPresentacion
+     * Get fechapresentacion
      *
      * @return \DateTime
      */
-    public function getFechaPresentacion()
+    public function getFechapresentacion()
     {
-        return $this->fechaPresentacion;
+        return $this->fechapresentacion;
     }
 
     /**

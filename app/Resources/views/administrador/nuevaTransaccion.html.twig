@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<div class="container-fluid">
+		
+	<h3 class="alert alert-info">Registrar Ingreso</h3>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-2 col-md-6">
+			<div class="panel panel-primary">
+				<div class="panel-body">
+					<div class="form-group">
+						{{ form_start(form) }}
+						{{ form_widget(form) }}
+						<br/>
+						<button class="btn btn-success" type="submit">Guardar Ingreso</button>
+						<a class="btn btn-xs btn-danger" href="{{path('tesoreriaAdministrador')}}"> Regresar</a>
+						{{ form_end(form) }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	</div>
+
+    
+{% endblock %}

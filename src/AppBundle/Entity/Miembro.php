@@ -2,7 +2,6 @@
 
 namespace AppBundle\Entity;
 
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,14 +24,14 @@ class Miembro
     /**
      * @var string
      *
-     * @ORM\Column(name="Nombres", type="string", length=50, nullable=true)
+     * @ORM\Column(name="nombres", type="string", length=50, nullable=true)
      */
     private $nombres;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Apellidos", type="string", length=40, nullable=true)
+     * @ORM\Column(name="apellidos", type="string", length=40, nullable=true)
      */
     private $apellidos;
 
@@ -41,14 +40,14 @@ class Miembro
      *
      * @ORM\Column(name="estadoCivil", type="string", length=10, nullable=true)
      */
-    private $estadoCivil;
+    private $estadocivil;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="fechaNac", type="date", nullable=true)
      */
-    private $fechaNac;
+    private $fechanac;
 
     /**
      * @var string
@@ -76,14 +75,14 @@ class Miembro
      *
      * @ORM\Column(name="telefonoFijo", type="string", length=20, nullable=true)
      */
-    private $telefonoFijo;
+    private $telefonofijo;
 
     /**
      * @var string
      *
      * @ORM\Column(name="telefonoMovil", type="string", length=20, nullable=true)
      */
-    private $telefonoMovil;
+    private $telefonomovil;
 
     /**
      * @var string
@@ -104,7 +103,7 @@ class Miembro
      *
      * @ORM\Column(name="fechaAceptacion", type="date", nullable=true)
      */
-    private $fechaAceptacion;
+    private $fechaaceptacion;
 
     /**
      * @var \Usuario
@@ -187,51 +186,51 @@ class Miembro
     }
 
     /**
-     * Set estadoCivil
+     * Set estadocivil
      *
-     * @param string $estadoCivil
+     * @param string $estadocivil
      *
      * @return Miembro
      */
-    public function setEstadoCivil($estadoCivil)
+    public function setEstadocivil($estadocivil)
     {
-        $this->estadoCivil = $estadoCivil;
+        $this->estadocivil = $estadocivil;
 
         return $this;
     }
 
     /**
-     * Get estadoCivil
+     * Get estadocivil
      *
      * @return string
      */
-    public function getEstadoCivil()
+    public function getEstadocivil()
     {
-        return $this->estadoCivil;
+        return $this->estadocivil;
     }
 
     /**
-     * Set fechaNac
+     * Set fechanac
      *
-     * @param \DateTime $fechaNac
+     * @param \DateTime $fechanac
      *
      * @return Miembro
      */
-    public function setFechaNac($fechaNac)
+    public function setFechanac($fechanac)
     {
-        $this->fechaNac = $fechaNac;
+        $this->fechanac = $fechanac;
 
         return $this;
     }
 
     /**
-     * Get fechaNac
+     * Get fechanac
      *
      * @return \DateTime
      */
-    public function getFechaNac()
+    public function getFechanac()
     {
-        return $this->fechaNac;
+        return $this->fechanac;
     }
 
     /**
@@ -307,51 +306,51 @@ class Miembro
     }
 
     /**
-     * Set telefonoFijo
+     * Set telefonofijo
      *
-     * @param string $telefonoFijo
+     * @param string $telefonofijo
      *
      * @return Miembro
      */
-    public function setTelefonoFijo($telefonoFijo)
+    public function setTelefonofijo($telefonofijo)
     {
-        $this->telefonoFijo = $telefonoFijo;
+        $this->telefonofijo = $telefonofijo;
 
         return $this;
     }
 
     /**
-     * Get telefonoFijo
+     * Get telefonofijo
      *
      * @return string
      */
-    public function getTelefonoFijo()
+    public function getTelefonofijo()
     {
-        return $this->telefonoFijo;
+        return $this->telefonofijo;
     }
 
     /**
-     * Set telefonoMovil
+     * Set telefonomovil
      *
-     * @param string $telefonoMovil
+     * @param string $telefonomovil
      *
      * @return Miembro
      */
-    public function setTelefonoMovil($telefonoMovil)
+    public function setTelefonomovil($telefonomovil)
     {
-        $this->telefonoMovil = $telefonoMovil;
+        $this->telefonomovil = $telefonomovil;
 
         return $this;
     }
 
     /**
-     * Get telefonoMovil
+     * Get telefonomovil
      *
      * @return string
      */
-    public function getTelefonoMovil()
+    public function getTelefonomovil()
     {
-        return $this->telefonoMovil;
+        return $this->telefonomovil;
     }
 
     /**
@@ -403,27 +402,27 @@ class Miembro
     }
 
     /**
-     * Set fechaAceptacion
+     * Set fechaaceptacion
      *
-     * @param \DateTime $fechaAceptacion
+     * @param \DateTime $fechaaceptacion
      *
      * @return Miembro
      */
-    public function setFechaAceptacion($fechaAceptacion)
+    public function setFechaaceptacion($fechaaceptacion)
     {
-        $this->fechaAceptacion = $fechaAceptacion;
+        $this->fechaaceptacion = $fechaaceptacion;
 
         return $this;
     }
 
     /**
-     * Get fechaAceptacion
+     * Get fechaaceptacion
      *
      * @return \DateTime
      */
-    public function getFechaAceptacion()
+    public function getFechaaceptacion()
     {
-        return $this->fechaAceptacion;
+        return $this->fechaaceptacion;
     }
 
     /**

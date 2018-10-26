@@ -36,11 +36,11 @@ class Inoutcaja
     private $cantidad;
 
     /**
-     * @var float
+     * @var \DateTime
      *
-     * @ORM\Column(name="Subtotal", type="float", precision=10, scale=0, nullable=true)
+     * @ORM\Column(name="fecha", type="datetime", nullable=true)
      */
-    private $subtotal;
+    private $fecha;
 
     /**
      * @var \Caja
@@ -57,7 +57,7 @@ class Inoutcaja
      *
      * @ORM\ManyToOne(targetEntity="Tipotransaccion")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="tipotransaccion_idtipotransaccuib", referencedColumnName="idtipotransaccuib")
+     *   @ORM\JoinColumn(name="tipotransaccion_idtipotransaccuib", referencedColumnName="idtipotransaccion")
      * })
      */
     private $tipotransacciontipotransaccuib;
@@ -123,27 +123,27 @@ class Inoutcaja
     }
 
     /**
-     * Set subtotal
+     * Set fecha
      *
-     * @param float $subtotal
+     * @param \DateTime $fecha
      *
      * @return Inoutcaja
      */
-    public function setSubtotal($subtotal)
+    public function setFecha($fecha)
     {
-        $this->subtotal = $subtotal;
+        $this->fecha = $fecha;
 
         return $this;
     }
 
     /**
-     * Get subtotal
+     * Get fecha
      *
-     * @return float
+     * @return \DateTime
      */
-    public function getSubtotal()
+    public function getFecha()
     {
-        return $this->subtotal;
+        return $this->fecha;
     }
 
     /**

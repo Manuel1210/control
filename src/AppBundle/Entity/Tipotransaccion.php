@@ -15,11 +15,11 @@ class Tipotransaccion
     /**
      * @var integer
      *
-     * @ORM\Column(name="idtipotransaccuib", type="integer", nullable=false)
+     * @ORM\Column(name="idtipotransaccion", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idtipotransaccuib;
+    private $idtipotransaccion;
 
     /**
      * @var string
@@ -45,13 +45,13 @@ class Tipotransaccion
 
 
     /**
-     * Get idtipotransaccuib
+     * Get idtipotransaccion
      *
      * @return integer
      */
-    public function getIdtipotransaccuib()
+    public function getIdtipotransaccion()
     {
-        return $this->idtipotransaccuib;
+        return $this->idtipotransaccion;
     }
 
     /**

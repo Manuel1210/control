@@ -22,9 +22,9 @@ class Bautizo
     private $idbautizo;
 
     /**
-     * @var \Date
+     * @var \DateTime
      *
-     * @ORM\Column(name="Fecha", type="date", nullable=true)
+     * @ORM\Column(name="fecha", type="date", nullable=true)
      */
     private $fecha;
 
@@ -53,7 +53,7 @@ class Bautizo
     /**
      * Set fecha
      *
-     * @param \Date $fecha
+     * @param \DateTime $fecha
      *
      * @return Bautizo
      */
@@ -67,7 +67,7 @@ class Bautizo
     /**
      * Get fecha
      *
-     * @return \Date
+     * @return \DateTime
      */
     public function getFecha()
     {

@@ -36,11 +36,11 @@ class Inoutcaja
     private $cantidad;
 
     /**
-     * @var float
+     * @var \DateTime
      *
-     * @ORM\Column(name="Subtotal", type="float", precision=10, scale=0, nullable=true)
+     * @ORM\Column(name="fecha", type="datetime", nullable=true)
      */
-    private $subtotal;
+    private $fecha;
 
     /**
      * @var \Caja
@@ -57,7 +57,7 @@ class Inoutcaja
      *
      * @ORM\ManyToOne(targetEntity="Tipotransaccion")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="tipotransaccion_idtipotransaccuib", referencedColumnName="idtipotransaccuib")
+     *   @ORM\JoinColumn(name="tipotransaccion_idtipotransaccuib", referencedColumnName="idtipotransaccion")
      * })
      */
     private $tipotransacciontipotransaccuib;

@@ -15,6 +15,11 @@ use AppBundle\Entity\Bautizo;
 use AppBundle\Form\BautizoType;
 use AppBundle\Entity\Ministerio;
 use AppBundle\Entity\Liderministerio;
+use AppBundle\Entity\Caja;
+use AppBundle\Entity\Inoutcaja;
+use AppBundle\Entity\Tipotransaccion;
+use AppBundle\Form\TipotransaccionType;
+use AppBundle\Form\InoutcajaType;
 
 class AdministradorController extends Controller
 {
@@ -278,7 +283,77 @@ public function asignarLiderAction($id){
   }
 
   public function tesoreriaAdministradorAction(){
-    return $this->render("administrador/tesoreriaAdministrador.html.twig");
+    $caja = $this->getDoctrine()->getRepository(Caja::class)->findOneByIdcaja(1);
+    $transacciones = $this->getDoctrine()->getRepository(Inoutcaja::class)->findByCajacaja($caja);
+    $tipotransaccion=$this->getDoctrine()->getRepository(Tipotransaccion::class)->findAll();
+
+    $validar=count($tipotransaccion);
+
+    return $this->render("administrador/tesoreriaAdministrador.html.twig",array(
+      'transacciones' => $transacciones,
+      'caja' => $caja,
+      'validar' => $validar
+    ));
+  }
+
+  public function nuevaTransaccionAction(Request $request){
+    $caja = $this->getDoctrine()->getRepository(Caja::class)->findOneByIdcaja(1);
+
+    $inoutcaja = new Inoutcaja();
+
+      $form=$this->createForm(InoutcajaType::class, $inoutcaja);
+      $user = $this->get('security.token_storage')->getToken()->getUser();
+
+
+      $form->handleRequest($request);
+
+      if ($form->isSubmitted() && $form->isValid()) {
+        // $form->getData() holds the submitted values
+        // but, the original `$task` variable has also been updated
+        $em = $this->getDoctrine()->getManager();
+        
+        $inoutcaja->setFecha(new \DateTime("now"));
+        $inoutcaja->setCajacaja($caja);
+
+        
+        $em->persist($inoutcaja);
+        $em->flush();
+        if($inoutcaja->getTipotransacciontipotransaccuib()->getTipo() == 1){
+          $caja->setTotal($caja->getTotal()+$inoutcaja->getCantidad());
+          $em->flush();
+        }else{
+          $caja->setTotal($caja->getTotal()-$inoutcaja->getCantidad());
+          $em->flush();
+        }
+        
+        
+        return $this->redirectToRoute('tesoreriaAdministrador');
+      }
+
+       return $this->render('administrador/nuevaTransaccion.html.twig',array("form"=>$form->createView() ));
+  }
+
+
+  public function nuevoTipotransaccionAction(Request $request){
+
+    $tipotransaccion = new Tipotransaccion();
+
+      $form=$this->createForm(TipotransaccionType::class, $tipotransaccion);
+
+
+      $form->handleRequest($request);
+
+      if ($form->isSubmitted() && $form->isValid()) {
+        // $form->getData() holds the submitted values
+        // but, the original `$task` variable has also been updated
+        $em = $this->getDoctrine()->getManager();
+        
+        $em->persist($tipotransaccion);
+        $em->flush();
+        return $this->redirectToRoute('tesoreriaAdministrador');
+      }
+
+       return $this->render('administrador/nuevoTipotransaccion.html.twig',array("form"=>$form->createView() ));
   }
 
   public function reportesAdministradorAction(){
