@@ -318,7 +318,7 @@ public function asignarLiderAction($id){
         
         $em->persist($inoutcaja);
         $em->flush();
-        if($inoutcaja->getTipotransacciontipotransaccuib()->getTipo() == 1){
+        if($inoutcaja->getTipotransacciontipotransaccion()->getTipo() == 1){
           $caja->setTotal($caja->getTotal()+$inoutcaja->getCantidad());
           $em->flush();
         }else{

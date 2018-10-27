@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Inoutcaja
  *
- * @ORM\Table(name="inoutcaja", indexes={@ORM\Index(name="fk_inoutcaja_Caja1_idx", columns={"Caja_idCaja"}), @ORM\Index(name="fk_inoutcaja_tipotransaccion1_idx", columns={"tipotransaccion_idtipotransaccuib"})})
+ * @ORM\Table(name="inoutcaja", indexes={@ORM\Index(name="fk_inoutcaja_caja1_idx", columns={"caja_idCaja"}), @ORM\Index(name="fk_inoutcaja_tipotransaccion1_idx", columns={"tipotransaccion_idtipotransaccion"})})
  * @ORM\Entity
  */
 class Inoutcaja
@@ -47,7 +47,7 @@ class Inoutcaja
      *
      * @ORM\ManyToOne(targetEntity="Caja")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Caja_idCaja", referencedColumnName="idCaja")
+     *   @ORM\JoinColumn(name="caja_idCaja", referencedColumnName="idCaja")
      * })
      */
     private $cajacaja;
@@ -57,10 +57,10 @@ class Inoutcaja
      *
      * @ORM\ManyToOne(targetEntity="Tipotransaccion")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="tipotransaccion_idtipotransaccuib", referencedColumnName="idtipotransaccion")
+     *   @ORM\JoinColumn(name="tipotransaccion_idtipotransaccion", referencedColumnName="idtipotransaccion")
      * })
      */
-    private $tipotransacciontipotransaccuib;
+    private $tipotransacciontipotransaccion;
 
 
 
@@ -171,26 +171,26 @@ class Inoutcaja
     }
 
     /**
-     * Set tipotransacciontipotransaccuib
+     * Set tipotransacciontipotransaccion
      *
-     * @param \AppBundle\Entity\Tipotransaccion $tipotransacciontipotransaccuib
+     * @param \AppBundle\Entity\Tipotransaccion $tipotransacciontipotransaccion
      *
      * @return Inoutcaja
      */
-    public function setTipotransacciontipotransaccuib(\AppBundle\Entity\Tipotransaccion $tipotransacciontipotransaccuib = null)
+    public function setTipotransacciontipotransaccion(\AppBundle\Entity\Tipotransaccion $tipotransacciontipotransaccion = null)
     {
-        $this->tipotransacciontipotransaccuib = $tipotransacciontipotransaccuib;
+        $this->tipotransacciontipotransaccion = $tipotransacciontipotransaccion;
 
         return $this;
     }
 
     /**
-     * Get tipotransacciontipotransaccuib
+     * Get tipotransacciontipotransaccion
      *
      * @return \AppBundle\Entity\Tipotransaccion
      */
-    public function getTipotransacciontipotransaccuib()
+    public function getTipotransacciontipotransaccion()
     {
-        return $this->tipotransacciontipotransaccuib;
+        return $this->tipotransacciontipotransaccion;
     }
 }
