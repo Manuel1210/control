@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 
 class TipotransaccionType extends AbstractType
@@ -16,13 +17,13 @@ class TipotransaccionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre')
-            ->add('descripcion')
+            ->add('nombre', TextType::class, array('attr' => array('class'=> 'form-control')))
+            ->add('descripcion', TextType::class, array('attr' => array('class'=>'form-control')))
+            
             ->add('tipo', ChoiceType::class,array('choices'
             => array(
               'Ingreso' => '1',
-              'Gasto' => '2',),
-            'attr' => array('class' => 'form-control')));
+              'Gasto' => '2',), 'attr' => array('class' => 'form-control')));
     }/**
      * {@inheritdoc}
      */

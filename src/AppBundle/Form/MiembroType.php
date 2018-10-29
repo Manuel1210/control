@@ -28,12 +28,11 @@ class MiembroType extends AbstractType
                     'Masculino' => "Masculino",
                     'Femenino' => "Femenino"
                 ),
-                'label' => "Genero",
-                'attr' => array('class' => 'form-control')
+                'label' => "Genero", 'attr' => array('class' => 'form-control')
             ))
-            ->add('email', TextType::class ,array('attr' => array('class' => 'form-control')))
+            ->add('email', TextType::class , array('attr' => array('class' => 'form-control'),'required'=>false))
             ->add('direccion', TextType::class ,array('attr' => array('class' => 'form-control')))
-            ->add('telefonoFijo', TextType::class ,array('attr' => array('class' => 'form-control')))
+            ->add('telefonoFijo', TextType::class ,array('attr' => array('class' => 'form-control'), 'required'=>false))
             ->add('telefonoMovil', TextType::class ,array('attr' => array('class' => 'form-control')))
             ->add('nacionalidad', TextType::class ,array('attr' => array('class' => 'form-control')))
             ->add('profesion', TextType::class ,array('attr' => array('class' => 'form-control')));

@@ -73,6 +73,10 @@ ministerio:
   path: /ministerio
   defaults: { _controller: AppBundle:Administrador:ministerio }
 
+nuevoMinisterio:
+  path: /nuevoMinisterio
+  defaults: {_controller: AppBundle:Administrador:nuevoMinisterio} 
+
 detallesMinisterio:
   path: /detallesMinisterio/{id}
   defaults: { _controller: AppBundle:Administrador:detallesMinisterio }

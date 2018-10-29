@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use AppBundle\Entity\Tipotransaccion;
 
 
@@ -17,19 +19,15 @@ class InoutcajaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('descripcion')
-        ->add('cantidad')
-        ->add('tipotransacciontipotransaccuib', EntityType::class, array(
+        ->add('descripcion', TextType::class, array('attr'=>array('class'=>'form-control')))
+        ->add('cantidad', TextType::class, array('attr'=>array('class'=>'form-control')))
+        ->add('fecha', DateType::class, array('attr'=>array('class'=>'form-control'),'widget' => 'single_text', 'html5'=>'true'))
+        ->add('tipotransacciontipotransaccion', EntityType::class, array(
             // looks for choices from this entity
             'class' => 'AppBundle:Tipotransaccion',
-        
             // uses the User.username property as the visible option string
-            'choice_label' => 'nombre',
-        
-            // used to render a select box, check boxes or radios
-            // 'multiple' => true,
-            // 'expanded' => true,
-        ));
+            'choice_label' => 'nombre',  
+        ), array('attr'=>array('class'=>'form-control')) );
     }/**
      * {@inheritdoc}
      */

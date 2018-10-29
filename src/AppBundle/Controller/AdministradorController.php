@@ -14,6 +14,7 @@ use AppBundle\Form\PresentacionType;
 use AppBundle\Entity\Bautizo;
 use AppBundle\Form\BautizoType;
 use AppBundle\Entity\Ministerio;
+use AppBundle\Form\MinisterioType;
 use AppBundle\Entity\Liderministerio;
 use AppBundle\Entity\Caja;
 use AppBundle\Entity\Inoutcaja;
@@ -220,6 +221,22 @@ public function ministerioAction(){
   return $this->render('administrador/ministerio.html.twig', array('ministerios'=>$ministerio));
 }
 
+public function nuevoMinisterioAction(Request $request){
+  $ministerio = new ministerio();
+  $em = $this->getDoctrine()->getManager();
+  $form = $this ->createForm(MinisterioType::class, $ministerio);
+
+  $form->handleRequest($request);
+
+  if ($form->isSubmitted() && $form->isValid()) {
+    $em->persist($ministerio);
+    $em->flush();
+    return $this->redirectToRoute('nuevoMinisterio');
+  }
+  return $this->render('administrador/nuevoMinisterio.html.twig', array("form"=>$form->createView() ));
+}
+
+
 public function detallesMinisterioAction($id){
   $ministerio = $this->getDoctrine()-> getRepository(Ministerio::class)->findOneByIdministerio($id);
 
@@ -280,6 +297,7 @@ public function asignarLiderAction($id){
 
   public function asignarMiembroMinisterio($id){
 
+
   }
 
   public function tesoreriaAdministradorAction(){
@@ -312,7 +330,7 @@ public function asignarLiderAction($id){
         // but, the original `$task` variable has also been updated
         $em = $this->getDoctrine()->getManager();
         
-        $inoutcaja->setFecha(new \DateTime("now"));
+        //$inoutcaja->setFecha(new \DateTime("now"));
         $inoutcaja->setCajacaja($caja);
 
         

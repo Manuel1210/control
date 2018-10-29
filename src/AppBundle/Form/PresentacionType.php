@@ -19,10 +19,10 @@ class PresentacionType extends AbstractType
         $builder
         ->add('nombres', textType::class, array('attr'=>array('class'=>'form-control'))) 
         ->add('apellidos', textType::class, array('attr'=>array('class'=>'form-control')))
-        ->add('fechaNac', DateType::class, array('attr'=>array('class'=>'form-control')))
-        ->add('nombresPapa', textType::class, array('attr'=>array('class'=>'form-control')))
-        ->add('nombresMama', textType::class, array('attr'=>array('class'=>'form-control')))
-        ->add('fechaPresentacion', DateType::class, array('attr'=>array('class'=>'form-control')));
+        ->add('fechaNac', DateType::class, array('attr'=>array('class'=>'form-control'),'widget' => 'single_text', 'html5'=>'true'))
+        ->add('nombresPapa', textType::class, array('attr'=>array('class'=>'form-control'), 'required'=>false))
+        ->add('nombresMama', textType::class, array('attr'=>array('class'=>'form-control'), 'required'=>false))
+        ->add('fechaPresentacion', DateType::class, array('attr'=>array('class'=>'form-control'),'widget' => 'single_text', 'html5'=>'true'));
     }/**
      * {@inheritdoc}
      */
