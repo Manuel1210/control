@@ -109,3 +109,7 @@ nuevoTipotransaccion:
 reportesAdministrador:
   path: /reportesAdministrador
   defaults: { _controller: AppBundle:Administrador:reportesAdministrador }
+
+pdfMinisterio:
+  path: /pdfMinisterio/{id}
+  defaults: { _controller: AppBundle:Administrador:pdfMinisterio }

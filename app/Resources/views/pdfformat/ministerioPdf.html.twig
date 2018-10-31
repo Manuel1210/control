@@ -1,0 +1,24 @@
+{% if lider != null %}
+<h4>Lider {{lider.Nombres}}</h4>
+{% endif %}
+
+
+<table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Genero</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for miembro in miembros %}
+                <tr>
+                    <td>{{miembro.Nombres}}</td>
+                    <td>{{miembro.Apellidos}}</td>
+                    <td>{{miembro.Genero}}</td>
+                </tr>
+            {% endfor %}
+                
+            </tbody>
+        </table>

@@ -21,6 +21,7 @@ use AppBundle\Entity\Inoutcaja;
 use AppBundle\Entity\Tipotransaccion;
 use AppBundle\Form\TipotransaccionType;
 use AppBundle\Form\InoutcajaType;
+use Symfony\Component\HttpFoundation\Response;
 
 class AdministradorController extends Controller
 {
@@ -376,5 +377,65 @@ public function asignarLiderAction($id){
 
   public function reportesAdministradorAction(){
     return $this->render('administrador/reportesAdministrador.html.twig');
+  }
+
+  public function pdfMinisterioAction($id){
+    $ministerio = $this->getDoctrine()->getRepository(Ministerio::class)->findOneByIdministerio($id);
+    $miembros = $this->getDoctrine()->getRepository(Miembro::class)->findByMinisterioministerio($ministerio);
+    $repositorylider = $this->getDoctrine()->getRepository(Liderministerio::class);
+  
+  $query = $repositorylider->createQueryBuilder('l')
+      ->where('l.ministerioministerio = :ministerio')
+      ->andWhere('l.estado = 1')
+      ->setParameter('ministerio', $ministerio)
+      ->getQuery();
+
+  $liderbusqueda = $query->getResult();
+
+    $lider=null;
+
+    if(count($liderbusqueda)>0){
+      $lider=$liderbusqueda[0];
+    }
+
+    $snappy=$this->get("knp_snappy.pdf");
+    $fecha_hoy=date("dmYHis");
+    
+    $ubi="/wamp64/www/control/web/public/pdf/";
+      //$ubi="/var/www/html/control/web/public/pdf/";
+
+
+      $filename="rep_".$fecha_hoy.".pdf";
+
+      // mostrar imagenes
+      //$path = $request->server->get('DOCUMENT_ROOT');    // C:/wamp64/www/
+      //$path = rtrim($path, "/");                         // C:/wamp64/www
+
+      $html = $this->renderView('pdfformat/ministerioPdf.html.twig',
+      array('miembros'=>$miembros,'lider'=>$lider));
+
+
+      //GENERAR PDF SIN RESPUESTAS
+      $response = new Response();
+      $response->setContent($this->get('knp_snappy.pdf')->generateFromHtml($html,$ubi.$filename,
+      array('lowquality' => false,
+        'print-media-type' => true,
+        'encoding' => 'utf-8',
+        'page-size' => 'Letter',
+        'margin-top'=> '1cm',
+        'margin-bottom'=>'1cm',
+        'margin-left'=> '2cm',
+        'margin-right'=> '1cm',
+        //'image-quality'=> '100',
+        'user-style-sheet'=> 'css/bootstrap.css',
+        'header-right'=>'Pag. [page] de [toPage]',
+        'header-font-size'=>7)));//guardamos el pdf
+
+      $response->setStatusCode(Response::HTTP_OK);
+      $response->headers->set('Content-Type', 'application/pdf');
+
+      return $this->redirectToRoute('ministerio');
+      //return $response;
+      //return new Response("public/inventarioadmin/".$filename);
   }
 }
