@@ -262,44 +262,78 @@ public function detallesMinisterioAction($id){
 
 }
 
-public function asignarMiembroAction($id){
-      $repository = $this->getDoctrine()->getRepository(Miembro::class);
-      $miembros = $repository->findAll();
 
-      return $this->render('administrador/asignarMiembro.html.twig', array('miembros'=>$miembros
+public function asignarMiembroAction($id){
+        $ministerio = $this->getDoctrine()->getRepository(Ministerio::class)->findOneByIdministerio($id);
+
+      $miembros = $this->getDoctrine()->getRepository(Miembro::class)->findByMinisterioministerio($ministerio);
+      
+      return $this->render('administrador/asignarMiembro.html.twig', array(
+        'miembros'=>$miembros,
+        'ministerio'=>$ministerio
       ));
     }
 
 public function asignarLiderAction($id){
-      $repository = $this->getDoctrine()->getRepository(Miembro::class);
-      $miembros = $repository->findAll();
+      $ministerio = $this->getDoctrine()->getRepository(Ministerio::class)->findOneByIdministerio($id);
 
-      return $this->render('administrador/asignarLider.html.twig', array('miembros'=>$miembros
+      $miembros = $this->getDoctrine()->getRepository(Miembro::class)->findByMinisterioministerio($ministerio);
+
+      return $this->render('administrador/asignarLider.html.twig', array(
+        'miembros'=>$miembros,
+        'ministerio' =>$ministerio
       ));
     }
 
 
-  public function asignacionLiderMinisterioAction($id){
-    $liderministerio = new Liderministerio();
-  $form=$this->createForm(LiderministerioType::class, $liderministerio);
+  public function asignacionLiderMinisterioAction($id,$idm){
+    $ministerio = $this->getDoctrine()->getRepository(Ministerio::class)->findOneByIdministerio($id);
+    $miembro = $this->getDoctrine()->getRepository(Miembro::class)->findOneByIdmiembro($idm);
+      $em = $this->getDoctrine()->getManager();
 
-  $form->handleRequest($request);
+        $lideresministerio = $this->getDoctrine()->getRepository(Liderministerio::class)->findByMinisterioministerio($ministerio);
 
-  if ($form->isSubmitted() && $form->isValid()) {
-      $em=$this->getDoctrine()->getManager();
-      $em->persist($liderministerio);
+        foreach ($lideresministerio as $lideres) {
+          $lideres->setEstado(0);
+          $em->flush();
 
-      $em->flush();
-      return $this->redirectToRoute('asignacionMiembroLider');
-    }  
-  return $this->render('administrador/asignacionMiembroLider.html.twig', array("form"=>$form->createView() ));
+        }
+
+        $lidernuevo=new Liderministerio();
+        $lidernuevo->setEstado(1);
+        $lidernuevo->setMinisterioministerio($ministerio);
+        $lidernuevo->setMiembromiembro($miembro);
+        $em->persist($lidernuevo);
+        $em->flush();
+
+        return $this->redirectToRoute('ministerio');
+  
   }
 
+  /*public function asignarMiembroMinisterio($id, $idmin){
+    $ministerio = $this->getDoctrine()->getRepository(Ministerio::class)->findOneByIdministerio($id);
+    $miembro = $this->getDoctrine()->getRepository(Miembro::class)->findOneByIdmiembro($idmin);
+      $em = $this->getDoctrine()->getManager();
 
-  public function asignarMiembroMinisterio($id){
+   $miembrosministerio = $this->getDoctrine()->getRepository(Liderministerio::class)->findByMinisterioministerio($ministerio);
 
+   foreach ($miembrosministerio as $miembros) {
+          $miembros->setEstado(0);
+          $em->flush();
 
-  }
+        }
+
+    $miembronuevo=new Ministerio();
+        $miembrornuevo->setEstado(1);
+        $miembronuevo->setMinisterioministerio($ministerio);
+        $miembronuevo->setMiembromiembro($miembro);
+        $em->persist($miembronuevo);
+        $em->flush();
+
+        return $this->redirectToRoute('ministerio');
+
+  }*/
+
 
   public function tesoreriaAdministradorAction(){
     $caja = $this->getDoctrine()->getRepository(Caja::class)->findOneByIdcaja(1);
@@ -401,7 +435,7 @@ public function asignarLiderAction($id){
     $snappy=$this->get("knp_snappy.pdf");
     $fecha_hoy=date("dmYHis");
     
-    $ubi="/wamp64/www/control/web/public/pdf/";
+    $ubi="C:/wamp64/www/control/web/public/pdf/";
       //$ubi="/var/www/html/control/web/public/pdf/";
 
 
@@ -427,8 +461,6 @@ public function asignarLiderAction($id){
         'margin-left'=> '2cm',
         'margin-right'=> '1cm',
         //'image-quality'=> '100',
-        'user-style-sheet'=> 'css/bootstrap.css',
-        'header-right'=>'Pag. [page] de [toPage]',
         'header-font-size'=>7)));//guardamos el pdf
 
       $response->setStatusCode(Response::HTTP_OK);

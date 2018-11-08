@@ -6,20 +6,34 @@
 
 {% block body %}
 <div class="container-fluid">
-    <h3 class="alert alert-info"> {{ministerio.Nombre}}</h3>
-    <button class="btn btn-success">
-        <i class="fas fa-user-plus fa-2x"></i> Agregar Miembro
-    </button>
-    {% if lider != null %}
-    <button class="btn btn-success">
-        <i class="fas fa-sync-alt fa-2x"></i> Cambiar Lider
-    </button>
+    <h3 class="alert alert-info"> {{ministerio.Nombre}}</h3> 
+    
+    {% if miembros != null %}
+        <a href="{{path('asignarMiembro', {id:ministerio.Idministerio})}} " class="btn btn-success">
+            <i class="fas fa-user-plus fa-2x"> </i> Agregar Miembro
+        </a>
     {% endif %}
+
+    {% if miembros == null %}
+        <a href=" " class="btn btn-success">
+            <i class="fas fa-user-plus fa-2x"> </i> Asiganr Miembro
+        </a>
+    {% endif %}
+
+
     {% if lider == null %}
-    <button class="btn btn-success">
-        <i class="fas fa-user-tie fa-2x"></i> Asignar lider
-    </button>
+    <a href="{{path('asignarLider', {id:ministerio.Idministerio})}}" class="btn btn-success">
+        <i class="fas fa-user-plus fa-2x"></i> Asignar lider
+    </a>
     {% endif %}
+
+
+    {% if lider != null %}
+    <a class="btn btn-success" href="{{path('asignarLider',{id:ministerio.Idministerio})}}">
+        <i class="fas fa-sync-alt fa-2x"></i> Cambiar Lider
+    </a>
+    {% endif %}
+
     
     <br><br>
 </div>

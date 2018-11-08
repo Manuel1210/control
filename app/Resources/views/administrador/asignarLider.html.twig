@@ -25,8 +25,7 @@
 								<td>{{miembro.Nombres}}</td>
 								<td>{{miembro.Apellidos}}</td>
 								<td>{{miembro.FechaAceptacion|date('d/m/Y')}}</td>
-								<td><a class="btn btn-danger" href='{{path('asignacionMiembroLider')}}'>Asignar Lider</a></td>
-								<td><a class="btn btn-danger" href='{{path('asignacionLiderMinisterio')}}'>Detalle Lider</a></td>
+								<td><a class="btn btn-danger" href='{{path('asignacionLiderMinisterio',{id:ministerio.Idministerio,idm:miembro.Idmiembro})}}'>Asignar Lider</a></td>
 							</tr>    
 							{% endfor %}
 						</tbody>

@@ -81,9 +81,14 @@ detallesMinisterio:
   path: /detallesMinisterio/{id}
   defaults: { _controller: AppBundle:Administrador:detallesMinisterio }
 
-asignarMiembro:
+  asignarMiembro:
   path: /asignarMiembro/{id}
   defaults: { _controller: AppBundle:Administrador:asignarMiembro }
+
+
+asignacionLiderMinisterio:
+ path: /asignacionLiderMinisterio/{id}/{idm}
+ defaults: {_controller: AppBundle:Administrador:asignacionLiderMinisterio }
 
 asignarLider:
   path: /asignarLider/{id}
@@ -92,6 +97,8 @@ asignarLider:
 cambioLiderMinisterio:
   path: /cambioLiderMinisterio/{id}
   defaults: {_controller: AppBundle:Administrador:cambioLiderMiembro}
+
+
 
 tesoreriaAdministrador:
   path: /tesoreriaAdministrador
