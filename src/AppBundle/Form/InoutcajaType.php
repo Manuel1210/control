@@ -26,8 +26,10 @@ class InoutcajaType extends AbstractType
             // looks for choices from this entity
             'class' => 'AppBundle:Tipotransaccion',
             // uses the User.username property as the visible option string
-            'choice_label' => 'nombre',  
-        ), array('attr'=>array('class'=>'form-control')) );
+            'choice_label' => 'nombre',
+            'label'=> 'Tipo Transaccion',
+            'attr'=>array('class'=>'form-control')  
+         ));
     }/**
      * {@inheritdoc}
      */

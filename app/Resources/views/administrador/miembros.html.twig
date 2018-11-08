@@ -7,6 +7,19 @@
 	<a class="btn btn-danger" href="{{path('nuevoMiembro')}}">
 				<i class="fa fa-plus"></i> Nuevo miembro
 			</a><br><br>
+			{# NOTIFICACIONES #}
+    <div class="container-fluid">
+      {% for message2 in app.session.flashbag().get('done') %}
+        <div class="alert alert-success">{{message2}}</div>
+      {% endfor %}
+    </div>
+    <div class="container-fluid">
+      {% for message1 in app.session.flashbag().get('error') %}
+        <div class="alert alert-danger">{{message1}}</div>
+      {% endfor %}
+    </div>
+    {#FIN NOTIFIACIONES#}
+<br><br>
 			<div class="container">
 			<div class="table-responsive">
 			<table class=" table table-bordered">

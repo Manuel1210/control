@@ -39,7 +39,7 @@ class MiembroType extends AbstractType
             ->add('estado', ChoiceType::class, array(
                 'choices'  => array(
                     'Activo' => "1",
-                    'Inactivo' => "2"
+                    'Inactivo' => "0"
                 ),
                 'label' => "Estado",
                 'attr' => array('class' => 'form-control')

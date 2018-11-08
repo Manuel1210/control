@@ -104,6 +104,7 @@ class AdministradorController extends Controller
           }
 
           $em->flush();
+
           return $this->redirectToRoute('usuarios');
         }
 
@@ -166,8 +167,34 @@ class AdministradorController extends Controller
 
 
         if($form->isSubmitted() && $form->isValid()){
+          $miembro=$form->getData();
+          
+          if($miembro->getEstado() == 0){
+            $ministerio=$miembro->getMinisterioMinisterio();
+            if($ministerio!=null){
+              $repositorylider = $this->getDoctrine()->getRepository(Liderministerio::class);
+  
+              $query = $repositorylider->createQueryBuilder('l')
+                  ->where('l.ministerioministerio = :ministerio')
+                  ->andWhere('l.estado = 1')
+                  ->setParameter('ministerio', $ministerio)
+                  ->getQuery();
 
-          $em->flush();
+              $lider = $query->getResult();
+
+              if($lider[0]->getMiembromiembro()==$miembro){
+                $this->addFlash("error","Cambie de lider");
+              }else{
+                $miembro->setMinisterioministerio(null);
+                $em->flush();
+
+                $this->addFlash("done","Usuario desabilitado");  
+              }
+            }
+            
+          }else{
+            $em->flush();
+          }
           return $this->redirectToRoute('miembros');
         }
 
@@ -224,6 +251,7 @@ public function seleccionarMiembroAction(){
 public function nuevoBautizoAction(Request $request){
   $bautizo = new Bautizo();
   $em=$this->getDoctrine()->getManager();
+  $bautizo->setFecha(new \DateTime());
   $form=$this->createForm(BautizoType::class, $bautizo);
 
   $form->handleRequest($request);
@@ -447,6 +475,7 @@ public function asignarLiderAction($id){
     $caja = $this->getDoctrine()->getRepository(Caja::class)->findOneByIdcaja(1);
 
     $inoutcaja = new Inoutcaja();
+    $inoutcaja->setFecha(new \DateTime());
 
       $form=$this->createForm(InoutcajaType::class, $inoutcaja);
       $user = $this->get('security.token_storage')->getToken()->getUser();

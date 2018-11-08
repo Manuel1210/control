@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Doctrine\ORM\EntityRepository;
 use AppBundle\Entity\Miembro;
 
 class BautizoType extends AbstractType
@@ -24,17 +25,21 @@ class BautizoType extends AbstractType
         ->add('fecha', DateType::class, array('attr' => array('class' => 'form-control'),'widget' => 'single_text', 'html5'=>'true','label'=>'Fecha bautizo'
         ))
         ->add('miembromiembro', EntityType::class, array(
-    // looks for choices from this entity
-    'class' => 'AppBundle:Miembro',
-    // uses the User.username property as the visible option string
-    'choice_label' => 'Nombres',
-    'label'=>"Miembro",
-    'attr' => array('class' => 'form-control')
+            // looks for choices from this entity
+            'class' => 'AppBundle:Miembro',
+            'query_builder' => function (EntityRepository $er) {
+                return $er->createQueryBuilder('u')
+                    ->where('u.estado = 1');
+            },
+            // uses the User.username property as the visible option string
+            'choice_label' => 'Nombres',
+            'label'=>"Miembro",
+            'attr' => array('class' => 'form-control')
 
-    // used to render a select box, check boxes or radios
-    // 'multiple' => true,
-    // 'expanded' => true,
-));
+            // used to render a select box, check boxes or radios
+            // 'multiple' => true,
+            // 'expanded' => true,
+        ));
     }/**
      * {@inheritdoc}
      */
