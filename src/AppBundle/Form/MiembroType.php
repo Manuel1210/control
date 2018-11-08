@@ -35,7 +35,15 @@ class MiembroType extends AbstractType
             ->add('telefonoFijo', TextType::class ,array('attr' => array('class' => 'form-control'), 'required'=>false))
             ->add('telefonoMovil', TextType::class ,array('attr' => array('class' => 'form-control')))
             ->add('nacionalidad', TextType::class ,array('attr' => array('class' => 'form-control')))
-            ->add('profesion', TextType::class ,array('attr' => array('class' => 'form-control')));
+            ->add('profesion', TextType::class ,array('attr' => array('class' => 'form-control')))
+            ->add('estado', ChoiceType::class, array(
+                'choices'  => array(
+                    'Activo' => "1",
+                    'Inactivo' => "2"
+                ),
+                'label' => "Estado",
+                'attr' => array('class' => 'form-control')
+            ));
             
             //->add('profesion')
             //->add('fechaAceptacion');

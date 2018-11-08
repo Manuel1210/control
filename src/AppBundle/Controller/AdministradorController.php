@@ -26,6 +26,23 @@ use Symfony\Component\HttpFoundation\Response;
 class AdministradorController extends Controller
 {
 
+    /**
+     * Adds a flash message to the current session for type.
+     *
+     * @param string $type    The type
+     * @param string $message The message
+     *
+     * @throws \LogicException
+     */
+    protected function addFlash($type, $message){
+    // Retrieve flashbag from the controller
+    $flashbag = $this->get('session')->getFlashBag();
+
+    // Add flash message
+    $flashbag->add($type, $message);
+
+    }
+
     public function indexAction()
     {
         // replace this example code with whatever you need
@@ -102,6 +119,13 @@ class AdministradorController extends Controller
       return $this->render('administrador/miembros.html.twig',array(
         'miembros'=>$miembros
       ));
+    }
+
+    public function detalleMiembroAction($id){
+      $miembro = $this->getDoctrine()->getRepository(Miembro::class)->findOneByIdmiembro($id);
+
+      return $this->render('administrador/detalleMiembro.html.twig',array('miembro'=>$miembro));
+
     }
 
     public function nuevoMiembroAction(Request $request){
@@ -262,22 +286,11 @@ public function detallesMinisterioAction($id){
 
 }
 
-
-public function asignarMiembroAction($id){
-        $ministerio = $this->getDoctrine()->getRepository(Ministerio::class)->findOneByIdministerio($id);
-
-      $miembros = $this->getDoctrine()->getRepository(Miembro::class)->findByMinisterioministerio($ministerio);
-      
-      return $this->render('administrador/asignarMiembro.html.twig', array(
-        'miembros'=>$miembros,
-        'ministerio'=>$ministerio
-      ));
-    }
-
 public function asignarLiderAction($id){
       $ministerio = $this->getDoctrine()->getRepository(Ministerio::class)->findOneByIdministerio($id);
 
       $miembros = $this->getDoctrine()->getRepository(Miembro::class)->findByMinisterioministerio($ministerio);
+
 
       return $this->render('administrador/asignarLider.html.twig', array(
         'miembros'=>$miembros,
@@ -306,33 +319,114 @@ public function asignarLiderAction($id){
         $em->persist($lidernuevo);
         $em->flush();
 
-        return $this->redirectToRoute('ministerio');
+
+        $this->addFlash("done","Lider Asignado");
+
+        $repositorylider = $this->getDoctrine()->getRepository(Liderministerio::class);
+  
+    $query = $repositorylider->createQueryBuilder('l')
+        ->where('l.ministerioministerio = :ministerio')
+        ->andWhere('l.estado = 1')
+        ->setParameter('ministerio', $ministerio)
+        ->getQuery();
+
+    $lider = $query->getResult();
+
+
+    $miembros = $this->getDoctrine()-> getRepository(Miembro::class)->findByMinisterioministerio($ministerio);
+
+    return $this->render('administrador/detallesMinisterio.html.twig',array(
+      'ministerio'=>$ministerio,
+      'lider' => $lider,
+      'miembros' => $miembros
+    ));
   
   }
 
-  /*public function asignarMiembroMinisterio($id, $idmin){
-    $ministerio = $this->getDoctrine()->getRepository(Ministerio::class)->findOneByIdministerio($id);
-    $miembro = $this->getDoctrine()->getRepository(Miembro::class)->findOneByIdmiembro($idmin);
-      $em = $this->getDoctrine()->getManager();
+  public function asignarMiembroMinisterioAction($idm){
+    $ministerio = $this->getDoctrine()->getRepository(Ministerio::class)->findOneByIdministerio($idm);
+    $miembros = $this->getDoctrine()->getRepository(Miembro::class)->findBy(array('ministerioministerio'=>null,'estado'=>'1'));
+    
 
-   $miembrosministerio = $this->getDoctrine()->getRepository(Liderministerio::class)->findByMinisterioministerio($ministerio);
 
-   foreach ($miembrosministerio as $miembros) {
-          $miembros->setEstado(0);
-          $em->flush();
+    return $this->render('administrador/asignarMiembro.html.twig',array(
+      'miembros' => $miembros,
+      'ministerio' => $ministerio
+    ));
 
-        }
+  }
 
-    $miembronuevo=new Ministerio();
-        $miembrornuevo->setEstado(1);
-        $miembronuevo->setMinisterioministerio($ministerio);
-        $miembronuevo->setMiembromiembro($miembro);
-        $em->persist($miembronuevo);
-        $em->flush();
+  public function asignacionMiembroMinisterioAction($id,$idm){
+    $ministerio = $this->getDoctrine()->getRepository(Ministerio::class)->findOneByIdministerio($idm);
+    $miembro = $this->getDoctrine()->getRepository(Miembro::class)->findOneByIdmiembro($id);
+    $em = $this->getDoctrine()->getManager();
 
-        return $this->redirectToRoute('ministerio');
 
-  }*/
+    $miembro->setMinisterioministerio($ministerio);
+    $em->flush();
+
+    $this->addFlash("done","Miembro asignado");
+
+
+    $repositorylider = $this->getDoctrine()->getRepository(Liderministerio::class);
+  
+    $query = $repositorylider->createQueryBuilder('l')
+        ->where('l.ministerioministerio = :ministerio')
+        ->andWhere('l.estado = 1')
+        ->setParameter('ministerio', $ministerio)
+        ->getQuery();
+
+    $lider = $query->getResult();
+
+
+    $miembros = $this->getDoctrine()-> getRepository(Miembro::class)->findByMinisterioministerio($ministerio);
+
+    return $this->render('administrador/detallesMinisterio.html.twig',array(
+      'ministerio'=>$ministerio,
+      'lider' => $lider,
+      'miembros' => $miembros
+    ));
+
+
+  }
+
+  public function borrarMiembroMinisterioAction($id){
+    $miembro = $this->getDoctrine()->getRepository(Miembro::class)->findOneByIdmiembro($id);
+    $idm = $miembro->getMinisterioMinisterio()->getIdministerio();
+    $ministerio = $this->getDoctrine()->getRepository(Ministerio::class)->findOneByIdministerio($idm);
+    $em = $this->getDoctrine()->getManager();
+
+
+    
+
+    $repositorylider = $this->getDoctrine()->getRepository(Liderministerio::class);
+  
+    $query = $repositorylider->createQueryBuilder('l')
+        ->where('l.ministerioministerio = :ministerio')
+        ->andWhere('l.estado = 1')
+        ->setParameter('ministerio', $ministerio)
+        ->getQuery();
+
+    $lider = $query->getResult();
+
+    if($lider[0]->getMiembromiembro()==$miembro){
+      $this->addFlash("error","No puede borrar al miembro es lider");
+    }else{
+      $miembro->setMinisterioministerio(null);
+      $em->flush();
+
+      $this->addFlash("done","Usuario borrado de ministerio");  
+    }
+
+
+    $miembros = $this->getDoctrine()-> getRepository(Miembro::class)->findByMinisterioministerio($ministerio);
+
+    return $this->render('administrador/detallesMinisterio.html.twig',array(
+      'ministerio'=>$ministerio,
+      'lider' => $lider,
+      'miembros' => $miembros
+    ));
+  }
 
 
   public function tesoreriaAdministradorAction(){
@@ -435,7 +529,8 @@ public function asignarLiderAction($id){
     $snappy=$this->get("knp_snappy.pdf");
     $fecha_hoy=date("dmYHis");
     
-    $ubi="C:/wamp64/www/control/web/public/pdf/";
+    //$ubi="C:/wamp64/www/control/web/public/pdf/";
+    $ubi="/home/pablo/";
       //$ubi="/var/www/html/control/web/public/pdf/";
 
 

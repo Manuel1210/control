@@ -5,20 +5,15 @@
 
 
 {% block body %}
+    
 <div class="container-fluid">
     <h3 class="alert alert-info"> {{ministerio.Nombre}}</h3> 
     
-    {% if miembros != null %}
-        <a href="{{path('asignarMiembro', {id:ministerio.Idministerio})}} " class="btn btn-success">
-            <i class="fas fa-user-plus fa-2x"> </i> Agregar Miembro
-        </a>
-    {% endif %}
-
-    {% if miembros == null %}
-        <a href=" " class="btn btn-success">
+    
+        <a href="{{path('asignarMiembroMinisterio',{idm:ministerio.Idministerio})}}" class="btn btn-success">
             <i class="fas fa-user-plus fa-2x"> </i> Asiganr Miembro
         </a>
-    {% endif %}
+    
 
 
     {% if lider == null %}
@@ -37,6 +32,19 @@
     
     <br><br>
 </div>
+
+{# NOTIFICACIONES #}
+    <div class="container-fluid">
+      {% for message2 in app.session.flashbag().get('done') %}
+        <div class="alert alert-success">{{message2}}</div>
+      {% endfor %}
+    </div>
+    <div class="container-fluid">
+      {% for message1 in app.session.flashbag().get('error') %}
+        <div class="alert alert-danger">{{message1}}</div>
+      {% endfor %}
+    </div>
+    {#FIN NOTIFIACIONES#}
 
 <div class="card bg-info text-black container">
 
@@ -63,6 +71,11 @@
                     <td>{{miembro.Nombres}}</td>
                     <td>{{miembro.Apellidos}}</td>
                     <td>{{miembro.Genero}}</td>
+                    <td>
+                        <a class="btn btn-danger" href="{{path('borrarMiembroMinisterio',{id:miembro.Idmiembro})}}">
+                            <i class="fas fa-trash-alt"></i> Borrar
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
                 

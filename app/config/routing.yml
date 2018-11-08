@@ -41,6 +41,10 @@ miembros:
   path: /miembros
   defaults: { _controller: AppBundle:Administrador:miembros }
 
+detalleMiembro:
+  path: /detalleMiembro/{id}
+  defaults: { _controller: AppBundle:Administrador:detalleMiembro }
+
 nuevoMiembro:
   path: /nuevoMiembro
   defaults: { _controller: AppBundle:Administrador:nuevoMiembro }
@@ -81,10 +85,17 @@ detallesMinisterio:
   path: /detallesMinisterio/{id}
   defaults: { _controller: AppBundle:Administrador:detallesMinisterio }
 
-  asignarMiembro:
-  path: /asignarMiembro/{id}
-  defaults: { _controller: AppBundle:Administrador:asignarMiembro }
+asignarMiembroMinisterio:
+  path: /asignarMiembro/{idm}
+  defaults: { _controller: AppBundle:Administrador:asignarMiembroMinisterio }
 
+borrarMiembroMinisterio:
+  path: /borrarMiembroMinisterio/{id}
+  defaults: { _controller: AppBundle:Administrador:borrarMiembroMinisterio }
+
+asignacionMiembroMinisterio:
+  path: /asignacionMiembroMinisterio/{id}/{idm}
+  defaults: { _controller: AppBundle:Administrador:asignacionMiembroMinisterio }
 
 asignacionLiderMinisterio:
  path: /asignacionLiderMinisterio/{id}/{idm}

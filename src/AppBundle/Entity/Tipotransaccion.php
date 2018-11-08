@@ -26,21 +26,21 @@ class Tipotransaccion
      *
      * @ORM\Column(name="nombre", type="string", length=45, nullable=true)
      */
-    private $nombre;
+    private $nombre = 'NULL';
 
     /**
      * @var string
      *
      * @ORM\Column(name="descripcion", type="string", length=600, nullable=true)
      */
-    private $descripcion;
+    private $descripcion = 'NULL';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="tipo", type="integer", nullable=true)
      */
-    private $tipo;
+    private $tipo = 'NULL';
 
 
 

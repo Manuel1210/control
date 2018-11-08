@@ -26,21 +26,21 @@ class Usuario
      *
      * @ORM\Column(name="username", type="string", length=45, nullable=true)
      */
-    private $username;
+    private $username = 'NULL';
 
     /**
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=200, nullable=true)
      */
-    private $password;
+    private $password = 'NULL';
 
     /**
      * @var string
      *
      * @ORM\Column(name="rol", type="string", length=45, nullable=true)
      */
-    private $rol;
+    private $rol = 'NULL';
 
 
 }

@@ -74,9 +74,11 @@ sensio_framework_extra:
 knp_snappy:
     pdf:
         enabled:    true
-        binary:     C:"\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe
+        binary:     'xvfb-run /usr/bin/wkhtmltopdf'
+        #binary:     C:"\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe
         options:    []
     image:
         enabled:    true
-        binary:     C:"\Program Files\wkhtmltopdf\bin\wkhtmltoimage.exe
+        binary:     'xvfb-run /usr/bin/wkhtmltopdf'
+        #binary:     C:"\Program Files\wkhtmltopdf\bin\wkhtmltoimage.exe
         options:    []

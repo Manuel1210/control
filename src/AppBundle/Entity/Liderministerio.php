@@ -26,7 +26,7 @@ class Liderministerio
      *
      * @ORM\Column(name="estado", type="integer", nullable=true)
      */
-    private $estado;
+    private $estado = 'NULL';
 
     /**
      * @var \Miembro

@@ -26,21 +26,21 @@ class Ministerio
      *
      * @ORM\Column(name="nombre", type="string", length=45, nullable=true)
      */
-    private $nombre;
+    private $nombre = 'NULL';
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="fecha", type="date", nullable=true)
      */
-    private $fecha;
+    private $fecha = 'NULL';
 
     /**
      * @var string
      *
      * @ORM\Column(name="descripcion", type="string", length=200, nullable=true)
      */
-    private $descripcion;
+    private $descripcion = 'NULL';
 
 
 }

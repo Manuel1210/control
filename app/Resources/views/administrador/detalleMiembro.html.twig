@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container-fluid">
+	<h2 class="alert alert-info">Detalles Miembro</h2>
+	<div class="container">
+		<label for="nombre">Nombres</label>
+		<input type="text" name="nombre" class="form-control" value="{{miembro.Nombres}}" readonly>
+
+		<label for="apellido">Apellidos</label>
+		<input type="text" name="apellido" class="form-control" value="{{miembro.Apellidos}}" readonly>
+
+		<label for="estadocivil">Estado civil</label>
+		<input type="text" name="estadocivil" class="form-control" value="{{miembro.Estadocivil}}" readonly>
+
+		<label for="fechanac">Fecha Nacimiento</label>
+		<input type="text" name="nombre" class="form-control" value="{{miembro.Fechanac|date('d/m/Y')}}" readonly>
+
+		<label for="email">Email</label>
+		<input type="text" name="email" class="form-control" value="{{miembro.Email}}" readonly>
+		
+		<label for="direccion">Direccion</label>
+		<input type="text" name="direccion" class="form-control" value="{{miembro.Direccion}}" readonly>
+
+		<label for="telfijo">Telefon Fijo</label>
+		<input type="text" name="telfijo" class="form-control" value="{{miembro.Telefonofijo}}" readonly>
+
+		<label for="telfijo">Telefon Movil</label>
+		<input type="text" name="telmovil" class="form-control" value="{{miembro.Telefonomovil}}" readonly>
+
+		<label for="nacionalidad">Nacionalidad</label>
+		<input type="text" name="nacionalidad" class="form-control" value="{{miembro.Nacionalidad}}" readonly>
+
+		<label for="profesion">Profesion</label>
+		<input type="text" name="profesion" class="form-control" value="{{miembro.Profesion}}" readonly>
+
+		<label for="fechaaceptacion">Fecha Aceptaccion</label>
+		<input type="text" name="fechaaceptacion" class="form-control" value="{{miembro.fechaaceptacion | date('d/m/Y')}}" readonly>
+
+		<label for="estado">Estado</label>
+		<input type="text" name="estado" class="form-control" value="{{miembro.Estado}}" readonly>
+	</div>	
+	<br>
+	<br>
+	<a class="btn btn-danger" href="{{path('miembros')}}">
+		<i class="fas fa-arrow-left fa-2x"></i> Volver
+	</a>
+	<a class="btn btn-default" type="button" href="{{path('editarMiembro',{id:miembro.Idmiembro})}}">
+		<i class="fas fa-user-edit fa-2x"></i> Editar
+	</a>
+	<br><br><br><br>
+</div>
+
+
+{% endblock %}

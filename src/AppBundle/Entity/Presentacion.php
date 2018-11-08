@@ -26,42 +26,42 @@ class Presentacion
      *
      * @ORM\Column(name="nombres", type="string", length=45, nullable=true)
      */
-    private $nombres;
+    private $nombres = 'NULL';
 
     /**
      * @var string
      *
      * @ORM\Column(name="apellidos", type="string", length=45, nullable=true)
      */
-    private $apellidos;
+    private $apellidos = 'NULL';
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="fechaNac", type="date", nullable=true)
      */
-    private $fechanac;
+    private $fechanac = 'NULL';
 
     /**
      * @var string
      *
      * @ORM\Column(name="nombresPapa", type="string", length=50, nullable=true)
      */
-    private $nombrespapa;
+    private $nombrespapa = 'NULL';
 
     /**
      * @var string
      *
      * @ORM\Column(name="nombresMama", type="string", length=50, nullable=true)
      */
-    private $nombresmama;
+    private $nombresmama = 'NULL';
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="fechaPresentacion", type="date", nullable=true)
      */
-    private $fechapresentacion;
+    private $fechapresentacion = 'NULL';
 
     /**
      * @var \Usuario

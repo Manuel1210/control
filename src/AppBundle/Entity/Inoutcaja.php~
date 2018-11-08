@@ -26,21 +26,21 @@ class Inoutcaja
      *
      * @ORM\Column(name="descripcion", type="string", length=4000, nullable=true)
      */
-    private $descripcion;
+    private $descripcion = 'NULL';
 
     /**
      * @var float
      *
      * @ORM\Column(name="cantidad", type="float", precision=10, scale=0, nullable=true)
      */
-    private $cantidad;
+    private $cantidad = 'NULL';
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="fecha", type="datetime", nullable=true)
      */
-    private $fecha;
+    private $fecha = 'NULL';
 
     /**
      * @var \Caja

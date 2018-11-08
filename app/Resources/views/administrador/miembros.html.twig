@@ -7,21 +7,14 @@
 	<a class="btn btn-danger" href="{{path('nuevoMiembro')}}">
 				<i class="fa fa-plus"></i> Nuevo miembro
 			</a><br><br>
+			<div class="container">
 			<div class="table-responsive">
 			<table class=" table table-bordered">
 						<tr>
 							<th>Nombres</th>
 							<th>Apellidos</th>
-							<th>Estado Civil</th>
-							<th>Fecha nacimiento</th>
-							<th>Genero</th>
-							<th>Email</th>
-							<th>Direccion</th>
-							<th>Telefono Fijo</th>
-							<th>Telefono Movil</th>
-							<th>Nacionalidad</th>
-							<th>Profesion</th>
 							<th>Fecha Aceptacion</th>
+							<th>Estado</th>
 						</tr>
 
 						<tbody>
@@ -29,19 +22,18 @@
 							<tr>
 								<td>{{miembro.Nombres}}</td>
 								<td>{{miembro.Apellidos}}</td>
-								<td>{{miembro.EstadoCivil}}</td>
-								<td>{{miembro.FechaNac|date('d/m/Y')}}</td>
-								<td>{{miembro.Genero}}</td>
-								<td>{{miembro.Email}}</td>
-								<td>{{miembro.Direccion}}</td>
-								<td>{{miembro.TelefonoFijo}}</td>
-								<td>{{miembro.TelefonoMovil}}</td>
-								<td>{{miembro.Nacionalidad}}</td>
-								<td>{{miembro.Profesion}}</td>
 								<td>{{miembro.FechaAceptacion|date('d/m/Y')}}</td>
 								<td>
-									<a class="btn btn-default" type="button" href="{{path('editarMiembro',{id:miembro.Idmiembro})}}">
-										<i class="fas fa-user-edit fa-2x"></i> Editar
+									{% if miembro.Estado == 0 %}
+										<span class="btn btn-danger">Inactivo</span>
+									{% endif %}
+									{% if miembro.Estado == 1 %}
+										<span class="btn btn-primary">Activo</span>
+									{% endif %}
+								</td>
+								<td>
+									<a class="btn btn-default" type="button" href="{{path('detalleMiembro',{id:miembro.Idmiembro})}}">
+										<i class="fas fa-info-circle fa-2x"></i></i> Detalle
 									</a>
 								</td>
 							</tr>    
@@ -49,6 +41,7 @@
 						</tbody>
 					</table>
 					</div>	
+					</div>
 
 </div>
 

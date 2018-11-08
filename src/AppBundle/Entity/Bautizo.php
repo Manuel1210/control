@@ -26,7 +26,7 @@ class Bautizo
      *
      * @ORM\Column(name="fecha", type="date", nullable=true)
      */
-    private $fecha;
+    private $fecha = 'NULL';
 
     /**
      * @var \Miembro
