@@ -132,9 +132,11 @@ class AdministradorController extends Controller
     public function nuevoMiembroAction(Request $request){
       $miembro = new Miembro();
 
+        $miembro->setfechaNac(new \DateTime("now"));
+        $miembro->setFechaaceptacion(new \DateTime("now"));
+
       $form=$this->createForm(MiembroType::class, $miembro);
       $user = $this->get('security.token_storage')->getToken()->getUser();
-
 
       $form->handleRequest($request);
 
@@ -143,8 +145,6 @@ class AdministradorController extends Controller
         // but, the original `$task` variable has also been updated
         $em = $this->getDoctrine()->getManager();
         $miembro->setUsuariousuario($user);
-        $miembro->setFechaaceptacion(new \DateTime("now"));
-
         
         $em->persist($miembro);
         $em->flush();
@@ -212,6 +212,8 @@ class AdministradorController extends Controller
 
     public function nuevaPresentacionAction(Request $request){
       $presentacion = new Presentacion();
+      $presentacion->setfechaNac(new \DateTime("now"));
+      $presentacion->setfechaPresentacion(new \DateTime("now"));
 
       $form=$this->createForm(PresentacionType::class,$presentacion);
       $user= $this->get('security.token_storage')->getToken()->getUser();
@@ -515,7 +517,6 @@ public function asignarLiderAction($id){
     $tipotransaccion = new Tipotransaccion();
 
       $form=$this->createForm(TipotransaccionType::class, $tipotransaccion);
-
 
       $form->handleRequest($request);
 

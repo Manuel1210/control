@@ -36,6 +36,7 @@ class MiembroType extends AbstractType
             ->add('telefonoMovil', TextType::class ,array('attr' => array('class' => 'form-control')))
             ->add('nacionalidad', TextType::class ,array('attr' => array('class' => 'form-control')))
             ->add('profesion', TextType::class ,array('attr' => array('class' => 'form-control')))
+            ->add('fechaAceptacion', DateType::class, array('attr'=>array('class'=>'form-control'),'widget' => 'single_text', 'html5'=>'true'))
             ->add('estado', ChoiceType::class, array(
                 'choices'  => array(
                     'Activo' => "1",
