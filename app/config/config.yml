@@ -70,15 +70,20 @@ sensio_framework_extra:
    router:
         annotations: false
 
-#snapy for pdf reports
+    #windows configuration 
+    #snapy for pdf reports
 knp_snappy:
     pdf:
         enabled:    true
-        binary:     'xvfb-run /usr/bin/wkhtmltopdf'
-        #binary:     C:"\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe
-        options:    []
+        #binary:     'xvfb-run /usr/bin/wkhtmltopdf'
+        binary:     "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\""
+        options:    []    
+            ##set default setting from config.yml
+            #no-outline: true
+            #page-size: LETTER
+            #encoding: UTF-8
     image:
         enabled:    true
-        binary:     'xvfb-run /usr/bin/wkhtmltopdf'
-        #binary:     C:"\Program Files\wkhtmltopdf\bin\wkhtmltoimage.exe
+        #binary:     'xvfb-run /usr/bin/wkhtmltopdf'
+        binary:     "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\""
         options:    []

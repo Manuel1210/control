@@ -110,7 +110,6 @@ cambioLiderMinisterio:
   defaults: {_controller: AppBundle:Administrador:cambioLiderMiembro}
 
 
-
 tesoreriaAdministrador:
   path: /tesoreriaAdministrador
   defaults: { _controller: AppBundle:Administrador:tesoreriaAdministrador }
@@ -131,3 +130,7 @@ reportesAdministrador:
 pdfMinisterio:
   path: /pdfMinisterio/{id}
   defaults: { _controller: AppBundle:Administrador:pdfMinisterio }
+
+pdfprueba:
+  path: /pdfprueba
+  defaults: {_controller: AppBundle:Administrador:pdfprueba}

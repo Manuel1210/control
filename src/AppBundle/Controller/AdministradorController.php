@@ -278,6 +278,8 @@ public function ministerioAction(){
 
 public function nuevoMinisterioAction(Request $request){
   $ministerio = new ministerio();
+  $ministerio->setfecha(new \DateTime("now"));
+
   $em = $this->getDoctrine()->getManager();
   $form = $this ->createForm(MinisterioType::class, $ministerio);
 
@@ -286,7 +288,7 @@ public function nuevoMinisterioAction(Request $request){
   if ($form->isSubmitted() && $form->isValid()) {
     $em->persist($ministerio);
     $em->flush();
-    return $this->redirectToRoute('nuevoMinisterio');
+    return $this->redirectToRoute('ministerio');
   }
   return $this->render('administrador/nuevoMinisterio.html.twig', array("form"=>$form->createView() ));
 }
@@ -560,19 +562,16 @@ public function asignarLiderAction($id){
     $fecha_hoy=date("dmYHis");
     
     //$ubi="C:/wamp64/www/control/web/public/pdf/";
-    $ubi="/home/pablo/";
+    $ubi="/home/Manuel1210/";
       //$ubi="/var/www/html/control/web/public/pdf/";
 
-
       $filename="rep_".$fecha_hoy.".pdf";
-
       // mostrar imagenes
       //$path = $request->server->get('DOCUMENT_ROOT');    // C:/wamp64/www/
       //$path = rtrim($path, "/");                         // C:/wamp64/www
 
       $html = $this->renderView('pdfformat/ministerioPdf.html.twig',
       array('miembros'=>$miembros,'lider'=>$lider));
-
 
       //GENERAR PDF SIN RESPUESTAS
       $response = new Response();
@@ -594,5 +593,24 @@ public function asignarLiderAction($id){
       return $this->redirectToRoute('ministerio');
       //return $response;
       //return new Response("public/inventarioadmin/".$filename);
+  }
+
+  public function pdfpruebaAction(Request $request){
+    $snappy= $this->get("knp_snappy.pdf");
+
+    $html = $this->renderView("pdf1.html.twig", array(
+      "title"=> "Awesome pdf Title"));
+
+    $filename = "custom_pdf_from_twig";
+
+    return new Response(
+      $snappy->getOutputFromHtml($html),
+      //status code
+      200,
+      array(
+        'Content-Type'=>'application/pdf',
+        'Content-Disposition'=>'inline; filename="'.$filename.'.pdf"'
+      ));
+
   }
 }
