@@ -1,0 +1,17 @@
+{% extends 'baseObrero.html.twig' %}
+
+{% block title %}Reportes Obrero{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+    <h1 class="alert alert-info">Generar PDF</h1><br>
+    <a class="btn btn-danger btn-lg" href="{{path('reporteObreroministerio')}}">
+        <i class="fas fa-list-ul"></i> Ministerios
+    </a>
+    <a class="btn btn-danger btn-lg" href="{{path('reporteObreroliderministerio')}}">
+        <i class="fas fa-file-pdf"></i> Lideres ministerio
+    </a>
+</div>
+
+{% endblock %}

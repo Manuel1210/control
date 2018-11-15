@@ -1,18 +1,15 @@
 {% extends 'baseObrero.html.twig' %}
 
-{% block title %} Obrero {% endblock %}
+{% block title %}Reporte Ministerio{% endblock %}
 
 {% block body %}
 <div class="container-fluid">
-	<h3 class="alert alert-info">Ministerios</h3>
+    <h2 class="alert alert-info">Reporte ministerio</h2>
+</div>
 
-<div class="container">
-	<div class="row">
-		<div class="col-md-12">
-
-			<div class="panel panel-primary ">
-				<div class="panel-body">
-					<table class=" table table-bordered">
+<div class="container-fluid">
+    <div class="table-responsive">
+        <table class=" table table-bordered">
 						<tr>
 							<th>Nombre Ministerio</th>
 							<th>Fecha</th>
@@ -27,8 +24,8 @@
 								<td>{{ministerio.Descripcion}}</td>
 
 								<td>
-									<a class="btn btn-info" href='{{path('detalleObreroministerio', {id:ministerio.idMinisterio})}}'>
-										<i class="fas fa-info-circle fa-2x"></i> Detalles
+									<a class="btn btn-danger" href='{{path('detalleObreroministerio', {id:ministerio.idMinisterio})}}'>
+										<i class="fas fa-file-pdf fa-2x"></i> Ver 
 									</a>
 								</td>
 								
@@ -36,12 +33,7 @@
 							{% endfor %}
 						</tbody>
 					</table>
-				</div>
-			</div>	
-		</div>
-	</div>
+    </div>
+    
 </div>
-</div>
-
-
 {% endblock %}

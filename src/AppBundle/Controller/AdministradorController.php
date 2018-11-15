@@ -132,8 +132,8 @@ class AdministradorController extends Controller
     public function nuevoMiembroAction(Request $request){
       $miembro = new Miembro();
 
-        $miembro->setfechaNac(new \DateTime("now"));
-        $miembro->setFechaaceptacion(new \DateTime("now"));
+      $miembro->setfechaNac(new \DateTime("now"));
+      $miembro->setFechaaceptacion(new \DateTime("now"));
 
       $form=$this->createForm(MiembroType::class, $miembro);
       $user = $this->get('security.token_storage')->getToken()->getUser();
@@ -613,4 +613,92 @@ public function asignarLiderAction($id){
       ));
 
   }
+
+  public function reporteMiembrosAction(){
+    return $this->render('administrador/reporteMiembros.html.twig');
+  }
+
+  public function reporteMiembrosbautizadosAction(){
+
+    return $this->render('administrador/reporteMiembrosbautizados.html.twig');
+
+  }
+
+  public function reporteMinisteriosadministradorAction(){
+
+    return $this->render('administrador/reporteMinisteriosadministrador.html.twig');
+  }
+
+  public function reporteLideresadministradorAction(){
+    return $this->render('administrador/reporteLideresadministrador.html.twig');
+  }
+
+  public function reportePresentacionesAction(){ 
+    
+    return $this->render('administrador/reportePresentaciones.html.twig');
+
+  }
+
+  public function fechaReportetesoreriaadminAction(Request $request){
+    return $this->render('administrador/fechaReportetesoreriaadmin.html.twig');
+  }
+
+
+  //pdf de reportes
+
+  public function pdfMiembrosAction(){
+    $miembros = $this->getDoctrine()->getRepository(Miembro::class)->findByEstado(1);
+    $repositorylider = $this->getDoctrine()->getRepository(Liderministerio::class);
+  
+  $query = $repositorylider->createQueryBuilder('l')
+      ->where('l.ministerioministerio = :ministerio')
+      ->andWhere('l.estado = 1')
+      ->setParameter('ministerio', $ministerio)
+      ->getQuery();
+
+  $liderbusqueda = $query->getResult();
+
+    $lider=null;
+
+    if(count($liderbusqueda)>0){
+      $lider=$liderbusqueda[0];
+    }
+
+    $snappy=$this->get("knp_snappy.pdf");
+    $fecha_hoy=date("dmYHis");
+    
+    //$ubi="C:/wamp64/www/control/web/public/pdf/";
+    //$ubi="/home/Manuel1210/";
+      //$ubi="/var/www/html/control/web/public/pdf/";
+
+      $filename="rep_".$fecha_hoy.".pdf";
+      // mostrar imagenes
+      //$path = $request->server->get('DOCUMENT_ROOT');    // C:/wamp64/www/
+      //$path = rtrim($path, "/");                         // C:/wamp64/www
+
+      $html = $this->renderView('pdfformat/ministerioPdf.html.twig',
+      array('miembros'=>$miembros,'lider'=>$lider));
+
+      //GENERAR PDF SIN RESPUESTAS
+      $response = new Response();
+      $response->setContent($this->get('knp_snappy.pdf')->generateFromHtml($html,$ubi.$filename,
+      array('lowquality' => false,
+        'print-media-type' => true,
+        'encoding' => 'utf-8',
+        'page-size' => 'Letter',
+        'margin-top'=> '1cm',
+        'margin-bottom'=>'1cm',
+        'margin-left'=> '2cm',
+        'margin-right'=> '1cm',
+        //'image-quality'=> '100',
+        'header-font-size'=>7)));//guardamos el pdf
+
+      $response->setStatusCode(Response::HTTP_OK);
+      $response->headers->set('Content-Type', 'application/pdf');
+
+      return $this->redirectToRoute('ministerio');
+      //return $response;
+      //return new Response("public/inventarioadmin/".$filename);
+  }
+
 }

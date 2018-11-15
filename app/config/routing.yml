@@ -23,7 +23,7 @@ tesoreroPage:
 
 obreroPage:
   path: /obreroPage
-  defaults: { _controller: AppBundle:Tesorero:index }
+  defaults: { _controller: AppBundle:Obrero:index }
 
 usuarios:
   path: /usuarios
@@ -134,3 +134,59 @@ pdfMinisterio:
 pdfprueba:
   path: /pdfprueba
   defaults: {_controller: AppBundle:Administrador:pdfprueba}
+
+reporteMiembros:
+  path: /reporteMiembros
+  defaults: { _controller: AppBundle:Administrador:reporteMiembros }
+  
+reporteMiembrosbautizados:
+  path: /reporteMiembrosbautizados
+  defaults: { _controller: AppBundle:Administrador:reporteMiembrosbautizados }
+
+reporteMinisteriosadministrador:
+  path: /reporteMinisteriosadministrador
+  defaults: { _controller: AppBundle:Administrador:reporteMinisteriosadministrador }
+
+reporteLideresadministrador:
+  path: /reporteLideresadministrador
+  defaults: { _controller: AppBundle:Administrador:reporteLideresadministrador }
+
+reportePresentaciones:
+  path: /reportePresentaciones
+  defaults: { _controller: AppBundle:Administrador:reportePresentaciones }
+
+fechaReportetesoreriaadmin:
+  path: /fechaReportetesoreriaadmin
+  defaults: { _controller: AppBundle:Administrador:fechaReportetesoreriaadmin }
+
+#funciones tesoreria
+
+fechaBusquedatesoreria:
+  path: /fechaBusquedatesoreria
+  defaults: { _controller: AppBundle:Tesorero:fechaBusquedatesoreria }
+
+resultadoBusquedatesoreria:
+  path: /resultadoBusquedatesoreria
+  defaults: { _controller: AppBundle:Tesorero:resultadoBusquedatesoreria }
+
+#fin funciones tesoreria
+
+#funciones obrero
+
+detalleObreroministerio:
+  path: /detalleObreroministerio/{id}
+  defaults: { _controller: AppBundle:Obrero:detalleObreroministerio }
+
+reportesObrero:
+  path: /reportesObrero
+  defaults: { _controller: AppBundle:Obrero:reportesObrero }
+
+reporteObreroministerio:
+  path: /reporteObreroministerio
+  defaults: { _controller: AppBundle:Obrero:reporteObreroministerio }
+
+reporteObreroliderministerio:
+  path: /reporteObreroliderministerio
+  defaults: { _controller: AppBundle:Obrero:reporteObreroliderministerio }
+
+#fin de funciones de obrero

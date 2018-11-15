@@ -39,7 +39,7 @@ class DefaultController extends Controller
                     return $this->redirectToRoute('administradorPage');
                 }else if($role=="Tesorero"){
                     return $this->redirectToRoute('tesoreroPage');
-                }else if($role=="obrero"){
+                }else if($role=="Obrero"){
                     return $this->redirectToRoute('obreroPage');
                 }
             

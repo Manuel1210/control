@@ -1,0 +1,48 @@
+{% extends 'baseObrero.html.twig' %}
+
+{% block title %}Detalle Ministerio{% endblock %}
+
+{% block body %}
+
+<h2 class="alert alert-info">Detalle Ministerio</h2>
+
+<div class="card bg-info text-black container">
+
+    {% if lider != null %}
+    <div class="card-header"><h4>Lider Ministerio: {{lider[0].Miembromiembro.Nombres}} {{lider[0].Miembromiembro.Apellidos}}</h4></div>
+    {% endif %}
+    {% if lider == null %}
+    <div class="card-header"><h4>Asignar lider a ministerio</h4></div>
+    {% endif %}
+    
+    
+    <div class="card-body" style="background-color: white;">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Genero</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for miembro in miembros %}
+                <tr>
+                    <td>{{miembro.Nombres}}</td>
+                    <td>{{miembro.Apellidos}}</td>
+                    <td>{{miembro.Genero}}</td>
+                    <td>
+                        <a class="btn btn-danger" href="{{path('borrarMiembroMinisterio',{id:miembro.Idmiembro})}}">
+                            <i class="fas fa-trash-alt"></i> Borrar
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+                
+            </tbody>
+        </table>
+    
+  </div>
+</div>
+
+{% endblock %}

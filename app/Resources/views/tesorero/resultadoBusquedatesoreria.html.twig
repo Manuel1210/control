@@ -1,10 +1,16 @@
 {% extends 'baseTesoreria.html.twig' %}
 
-{% block title %} Tesoreria {% endblock %}
+{% block title %}Resultado busqueda{% endblock %}
 
 {% block body %}
 <div class="container-fluid">
-<h1 class="alert alert-info">Movimientos caja </h1>
+
+<div class="container-fluid">
+    <h1 class="alert alert-info">Resultado busqueda</h1>
+    <h3>Fecha Inicio: {{fecha1|date('d/m/Y')}}</h3>
+    <h3>Fecha Final: {{fecha2|date('d/m/Y')}}</h3>
+</div>
+
 <div class="card bg-primary text-black container">
   <div class="card-header"><h4>Caja: {{caja.Total}}</h4></div>
   <div class="card-body" style="background-color: white;">
@@ -30,10 +36,16 @@
         </tbody>
     </table>
 	</div>
-    
+    <div class="card-footer text-muted">
+            <button class="btn btn-danger">
+                Imprimir pdf
+            </button>
+    </div>
+
   </div>
+  
 </div>
     
-</div>    
+</div>
 
 {% endblock %}
