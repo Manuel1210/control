@@ -1,0 +1,21 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    background: #F0000;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+p{
+	font-size: 25px;
+	text-align: center;
+	margin-right: 50px;
+	margin-left: 50px;
+
+}
+
+h2{
+	text-align: center;
+}
