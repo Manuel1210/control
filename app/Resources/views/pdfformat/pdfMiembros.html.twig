@@ -1,0 +1,42 @@
+
+{% block body %}
+
+<div class="container-fluid">
+    <h1 class="alert alert-info">Reporte Miembros</h1>
+    <br>
+
+    <div class="container">
+			<div class="table-responsive">
+			<table class=" table table-bordered">
+						<tr>
+							<th>Nombres</th>
+							<th>Apellidos</th>
+							<th>Fecha Aceptacion</th>
+							<th>Estado</th>
+						</tr>
+
+						<tbody>
+							{% for miembro in miembros %}
+							<tr>
+								<td>{{miembro.Nombres}}</td>
+								<td>{{miembro.Apellidos}}</td>
+								<td>{{miembro.FechaAceptacion|date('d/m/Y')}}</td>
+								<td>
+									{% if miembro.Estado == 0 %}
+										<span class="btn btn-danger">Inactivo</span>
+									{% endif %}
+									{% if miembro.Estado == 1 %}
+										<span class="btn btn-primary">Activo</span>
+									{% endif %}
+								</td>
+							</tr>    
+							{% endfor %}
+						</tbody>
+					</table>
+					</div>	
+					</div>
+
+    
+</div>
+
+{% endblock %}

@@ -76,14 +76,13 @@ knp_snappy:
     pdf:
         enabled:    true
         #binary:     'xvfb-run /usr/bin/wkhtmltopdf'
-        binary:     "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\""
+        binary:    C:"\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"
         options:    []    
             ##set default setting from config.yml
             #no-outline: true
             #page-size: LETTER
             #encoding: UTF-8
-    image:
-        enabled:    true
+            enabled:    true
         #binary:     'xvfb-run /usr/bin/wkhtmltopdf'
-        binary:     "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\""
+        binary:     C:"\Program Files\wkhtmltopdf\bin\wkhtmltoimage.exe"
         options:    []

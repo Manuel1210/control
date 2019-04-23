@@ -1,12 +1,17 @@
+{% extends 'base.html.twig' %}
 
 {% block body %}
 
-<div class="container-fluid">
-    <h1 class="alert alert-info">Reporte Miembros bautizados</h1>
-    <br>
+    <div class="container-fluid">
+        <h3 class="alert alert-info">Ventana de Miembros Bautizados</h3>
 
-    <div class="container">
-           <div class="table-responsive">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <br><br>
+
+            
+                <div class="table-responsive">
                     <table class=" table table-bordered">
                         <tr>
                             <th>fecha</th>
@@ -24,6 +29,17 @@
                         </tbody>
                     </table>
                 </div>
+
+                <div class="container">
+                  
+                    <a class="btn btn-danger btn-lg" href="{{path('pdfMiembrosbautizados')}}">    
+                    <i class="fas fa-file-pdf fa-2x"></i> Descargar
+                    </a>
+             </div>
         </div>
     </div>
+</div>
+</div>
+
+
 {% endblock %}

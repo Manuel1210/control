@@ -1,11 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Reporte tesoreria{% endblock %}
+{% block title %}Resultado busqueda{% endblock %}
 
 {% block body %}
+<div class="container-fluid">
 
 <div class="container-fluid">
-    <h1 class="alert alert-info">Reporte Tesoreria admin</h1>
+    <h1 class="alert alert-info">Resultado busqueda</h1>
+    <h3>Fecha Inicio: {{fecha1|date('d/m/Y')}}</h3>
+    <h3>Fecha Final: {{fecha2|date('d/m/Y')}}</h3>
+</div>
+
+<div class="card bg-primary text-black container">
+  <div class="card-header"><h4>Caja: {{caja.Total}}</h4></div>
+  <div class="card-body" style="background-color: white;">
+	<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Monto</th>
+                <th>Descripcion</th>
+				<th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+			{% for transaccion in transacciones %}
+			<tr>
+				<td>{{transaccion.Tipotransacciontipotransaccion.Nombre}}</td>
+				<td>{{transaccion.Cantidad}}</td>
+				<td>{{transaccion.Descripcion}}</td>
+				<td>{{transaccion.Fecha|date('d/m/Y')}}</td>
+			</tr>
+			{% endfor %}
+        </tbody>
+    </table>
+	</div>
+      <div class="container">
+        <a class="btn btn-danger btn-lg" href="{{path('pdfCaja')}}">
+            <i class="fas fa-file-pdf fa-2x"></i> Descargar pdf
+        </a>
+        </div>
+
+  </div>
+  
+</div>
+    
 </div>
 
 {% endblock %}

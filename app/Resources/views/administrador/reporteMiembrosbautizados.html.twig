@@ -6,6 +6,16 @@
 
 <div class="container-fluid">
     <h1 class="alert alert-info">Reporte Miembros Bautizados</h1>
+
+    <div class="col-md-10">
+        {{form_start(form, {'attr': {'class':'form-group','id':'form_hotel'} }) }}
+        {{form_widget(form)}}
+        <br>
+        <button  class="btn btn-success" type="submit">
+           <i class="fa fa-check fa-1x" aria-hidden="true"></i>  Ver Reporte
+        </button>
+     </div>   
+
 </div>
 
 {% endblock %}

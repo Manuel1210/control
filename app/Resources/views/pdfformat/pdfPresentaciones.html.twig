@@ -1,0 +1,37 @@
+{% block body %}
+
+<div class="container-fluid">
+    <h1 class="alert alert-info">Reporte Presentaciones de ni</h1>
+    <br>
+
+    <div class="container">
+			<div class="table-responsive">
+			<table class=" table table-bordered">
+						<tr>
+							<th>Nombres</th>
+							<th>Apellidos</th>
+							<th>Fecha Nacimiento</th>
+							<th>Nombres papa</th>
+							<th>Nombres mama</th>
+							<th>Fecha presentacion</th>
+						</tr>
+
+						<tbody>
+							{% for presentacion in Presentacion %}
+							<tr>
+								<td>{{presentacion.Nombres}}</td>
+								<td>{{presentacion.Apellidos}}</td>
+								<td>{{presentacion.FechaNac|date('d/m/Y')}}</td>
+								<td>{{presentacion.NombresPapa}}</td>
+								<td>{{presentacion.NombresMama}}</td>
+								<td>{{presentacion.FechaPresentacion|date('d/m/Y')}}</td>
+								</td>
+							</tr>    
+							{% endfor %}
+						</tbody>
+					</table>
+					</div>	
+			</div>
+
+</div>
+{% endblock %}

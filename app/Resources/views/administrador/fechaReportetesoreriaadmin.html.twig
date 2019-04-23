@@ -1,11 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Reporte Tesoreria{% endblock %}
+{% block title %}Reporte tesoreria{% endblock %}
 
 {% block body %}
-
 <div class="container-fluid">
-    <h1 class="alert alert-info">Reporte Tesoreria</h1>
+    <h1 class="alert alert-info">Buscar por fecha</h1>
 </div>
-
+<div class="col-md-6    ">
+    {{form_start(form, {'attr': {'class':'form-group'} }) }}
+    {{form_widget(form)}}
+    <br>
+    <button type="submit" class="btn btn-success">Buscar</button>
+    {{form_end(form)}}
+</div>
 {% endblock %}
+
+
+
+
+
+

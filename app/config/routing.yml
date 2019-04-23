@@ -135,13 +135,27 @@ pdfprueba:
   path: /pdfprueba
   defaults: {_controller: AppBundle:Administrador:pdfprueba}
 
+pdfMiembros:
+  path: /pdfMiembros
+  defaults: { _controller: AppBundle:Administrador:pdfMiembros }
+
 reporteMiembros:
   path: /reporteMiembros
   defaults: { _controller: AppBundle:Administrador:reporteMiembros }
   
+#funciones de bautizo
 reporteMiembrosbautizados:
   path: /reporteMiembrosbautizados
   defaults: { _controller: AppBundle:Administrador:reporteMiembrosbautizados }
+
+reporteMiembrosbautizadosresultbusqueda:
+  path: /reporteMiembrosbautizadosresultbusqueda
+  defaults: {_controller: AppBundle:Administrador:reporteMiembrosbautizadosresultbusqueda }
+
+pdfdMiembrosbautizados:
+  path: /pdfdMiembrosbautizados
+  defaults: {_controller: AppBundle:Administrador:pdfdMiembrosbautizados }
+# end
 
 reporteMinisteriosadministrador:
   path: /reporteMinisteriosadministrador
@@ -155,12 +169,24 @@ reportePresentaciones:
   path: /reportePresentaciones
   defaults: { _controller: AppBundle:Administrador:reportePresentaciones }
 
+pdfPresentaciones:
+  path: /pdfPresentaciones
+  defaults: {_controller: AppBundle:Administrador:pdfPresentaciones }
+
+# tesoreria administrador
 fechaReportetesoreriaadmin:
   path: /fechaReportetesoreriaadmin
   defaults: { _controller: AppBundle:Administrador:fechaReportetesoreriaadmin }
 
-#funciones tesoreria
+pdfCaja:
+  path: /pdfCaja
+  defaults: {_controller: AppBundle:Administrador:pdfCaja } 
 
+resultadoReportetesoreriaadmin:
+  path: /resultadoReportetesoreriaadmin
+  defaults: {_controller: AppBundle:Administrador:resultadoReportetesoreriaadmin }
+
+#funciones tesoreria
 fechaBusquedatesoreria:
   path: /fechaBusquedatesoreria
   defaults: { _controller: AppBundle:Tesorero:fechaBusquedatesoreria }
@@ -188,5 +214,5 @@ reporteObreroministerio:
 reporteObreroliderministerio:
   path: /reporteObreroliderministerio
   defaults: { _controller: AppBundle:Obrero:reporteObreroliderministerio }
-
 #fin de funciones de obrero
+

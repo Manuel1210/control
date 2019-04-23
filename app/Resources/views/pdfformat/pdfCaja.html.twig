@@ -1,0 +1,33 @@
+{% block body %}
+
+<div class="container-fluid">
+    <h1 class="alert alert-info">Reporte Miembros</h1>
+    <br>
+
+    <div class="container">
+            <div class="table-responsive">
+
+            <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Monto</th>
+                            <th>Descripcion</th>
+            				<th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            			{% for transaccion in transacciones %}
+            			<tr>
+            				<td>{{transaccion.Tipotransacciontipotransaccion.Nombre}}</td>
+            				<td>{{transaccion.Cantidad}}</td>
+            				<td>{{transaccion.Descripcion}}</td>
+            				<td>{{transaccion.Fecha|date('d/m/Y')}}</td>
+            			</tr>
+            			{% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %} 

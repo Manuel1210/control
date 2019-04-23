@@ -1,11 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Reporte Presentaciones{% endblock %}
+{% block title %}Reporte Miembros{% endblock %}
 
 {% block body %}
 
 <div class="container-fluid">
-    <h1 class="alert alert-info">Reporte Presentaciones</h1>
+    <h1 class="alert alert-info">Reporte Presentacion</h1>
+    <br>
+
+    <div class="container">
+			<div class="table-responsive">
+			<table class=" table table-bordered">
+						<tr>
+							<th>Nombres</th>
+							<th>Apellidos</th>
+							<th>Fecha Nacimiento</th>
+							<th>Nombres papa</th>
+							<th>Nombres mama</th>
+							<th>Fecha presentacion</th>
+						</tr>
+
+						<tbody>
+							{% for presentacion in Presentacion %}
+							<tr>
+								<td>{{presentacion.Nombres}}</td>
+								<td>{{presentacion.Apellidos}}</td>
+								<td>{{presentacion.FechaNac|date('d/m/Y')}}</td>
+								<td>{{presentacion.NombresPapa}}</td>
+								<td>{{presentacion.NombresMama}}</td>
+								<td>{{presentacion.FechaPresentacion|date('d/m/Y')}}</td>
+								</td>
+							</tr>    
+							{% endfor %}
+						</tbody>
+					</table>
+					</div>	
+					</div>
+
+    <div class="container">
+    	<a class="btn btn-danger btn-lg" href="{{path('pdfPresentaciones')}}">
+        	<i class="fas fa-file-pdf fa-2x"></i> Descargar
+    	</a>
+    </div>
 </div>
 
 {% endblock %}

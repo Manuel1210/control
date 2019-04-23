@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<div class="container-fluid">
+		<h3 class="alert alert-info">Ventana de Miembros Bautizados</h3>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<br><br>
+
+			
+				<div class="table-responsive">
+					<table class=" table table-bordered">
+						<tr>
+							<th>Fecha</th>
+							<th>Miembro</th>
+						</tr>
+
+						<tbody>
+							{% for bautizo in bautizos %}
+							<tr>
+								<td>{{bautizo.Fecha|date('d/m/Y')}} </td>
+								<td>{{bautizo.Miembromiembro.Nombres}}</td>
+
+							</tr>    
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				
+		</div>
+	</div>
+</div>
+
+	</div>
+
+
+{% endblock %}
